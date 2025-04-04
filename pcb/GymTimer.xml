@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\fernau\OneDrive - F5, Inc\Desktop\LunchTimeProjects\GymTimer\GymTimer\pcb\GymTimer.kicad_sch</source>
+    <date>5/27/2022 10:11:42 AM</date>
+    <tool>Eeschema (6.99.0-1656-g034b57d9c0)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>GymTimer.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="BT1">
+      <value>BK-913</value>
+      <footprint>GymTimer:BK-913</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BK-913/2329371</datasheet>
+      <libsource lib="GymTimer" part="BK-913" description="Battery Retainer Coin, 20.0mm 1 Cell PC Pin"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <property name="ki_description" value="Battery Retainer Coin, 20.0mm 1 Cell PC Pin"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dba7232f-4595-4cfc-b308-73dd18bacabe</tstamps>
+    </comp>
+    <comp ref="C1">
+      <value>.1uF</value>
+      <footprint>generic_footprints:cap-0402</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/kemet/C0402C104K4RACAUTO/3314827</datasheet>
+      <fields>
+        <field name="Manufacturer Part Number">C0402C104K4RACAUTO</field>
+      </fields>
+      <libsource lib="Generic_Symbols" part="Capacitor" description=""/>
+      <property name="Manufacturer Part Number" value="C0402C104K4RACAUTO"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>007825a8-193f-4b1d-933c-a1e4e5b69580</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>.1uF</value>
+      <footprint>generic_footprints:cap-0402</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/kemet/C0402C104K4RACAUTO/3314827</datasheet>
+      <fields>
+        <field name="Manufacturer Part Number">C0402C104K4RACAUTO</field>
+      </fields>
+      <libsource lib="Generic_Symbols" part="Capacitor" description=""/>
+      <property name="Manufacturer Part Number" value="C0402C104K4RACAUTO"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4ffbbac9-7f5e-4838-99e2-dff489b3915f</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>diode_TVS_bidirectional</value>
+      <footprint>GymTimer:TVS - PESD4V0Y1BSFYL</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/nexperia-usa-inc/PESD4V0Y1BSFYL/9326494</datasheet>
+      <libsource lib="Generic_Symbols" part="diode_TVS_bidirectional" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>909061d4-3174-40d5-aec1-6df358bc95a2</tstamps>
+    </comp>
+    <comp ref="M1">
+      <value>VibrationDCmotor</value>
+      <footprint>GymTimer:Z4TH7B2120042P</footprint>
+      <libsource lib="GymTimer" part="VibrationDCmotor" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3b483a55-0d3d-405a-9319-e03abc01656a</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>10k</value>
+      <footprint>generic_footprints:res_0402</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RK73G1ETTP1002F/9852052</datasheet>
+      <libsource lib="Generic_Symbols" part="Resistor" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>477e67f9-09c4-4470-b8e4-5b766936081f</tstamps>
+    </comp>
+    <comp ref="S1">
+      <value>SPST_NO_4pin</value>
+      <footprint>GymTimer:SPST-NO-EVQ-Q2U02W</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/panasonic-electronic-components/EVQ-Q2U02W/762904?s=N4IgTCBcDaIKIDUCOBaJYCuAGMB3EAugL5A</datasheet>
+      <libsource lib="Generic_Symbols" part="SPST_NO_4pin" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>075f57cb-d652-4a6d-bdc7-5d14ca2439d1</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>PIC12F1571</value>
+      <footprint>GymTimer:PIC12F1571 MSOP8</footprint>
+      <datasheet>https://www.digikey.com/en/products/detail/microchip-technology/PIC12F1571-I-MS/4739306</datasheet>
+      <libsource lib="GymTimer" part="PIC12F1571" description="PIC series Microcontroller IC 8-Bit 32MHz 1.75KB (1K x 14) FLASH 8-MSOP"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="GymTimer.kicad_sch"/>
+      <property name="ki_description" value="PIC series Microcontroller IC 8-Bit 32MHz 1.75KB (1K x 14) FLASH 8-MSOP"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9ad16c2c-1fed-4257-a034-518e09903b56</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Generic_Symbols" part="Capacitor">
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">Capacitor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="unspecified"/>
+        <pin num="2" name="2" type="unspecified"/>
+      </pins>
+    </libpart>
+    <libpart lib="Generic_Symbols" part="Resistor">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">Resistor</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="unspecified"/>
+        <pin num="2" name="2" type="unspecified"/>
+      </pins>
+    </libpart>
+    <libpart lib="Generic_Symbols" part="SPST_NO_4pin">
+      <fields>
+        <field name="Reference">S</field>
+        <field name="Value">SPST_NO_4pin</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="unspecified"/>
+        <pin num="2" name="A" type="unspecified"/>
+        <pin num="3" name="B" type="unspecified"/>
+        <pin num="4" name="B" type="unspecified"/>
+      </pins>
+    </libpart>
+    <libpart lib="Generic_Symbols" part="diode_TVS_bidirectional">
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">diode_TVS_bidirectional</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="unspecified"/>
+        <pin num="2" name="2" type="unspecified"/>
+      </pins>
+    </libpart>
+    <libpart lib="GymTimer" part="BK-913">
+      <description>Battery Retainer Coin, 20.0mm 1 Cell PC Pin</description>
+      <docs>https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BK-913/2329371</docs>
+      <fields>
+        <field name="Reference">BT</field>
+        <field name="Value">BK-913</field>
+        <field name="Footprint">GymTimer:BK-913</field>
+        <field name="Datasheet">https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BK-913/2329371</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="power_out"/>
+        <pin num="2" name="-" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="GymTimer" part="PIC12F1571">
+      <description>PIC series Microcontroller IC 8-Bit 32MHz 1.75KB (1K x 14) FLASH 8-MSOP</description>
+      <docs>https://www.digikey.com/en/products/detail/microchip-technology/PIC12F1571-I-MS/4739306</docs>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">PIC12F1571</field>
+        <field name="Footprint">Library:PIC12F1571 MSOP8</field>
+        <field name="Datasheet">https://www.digikey.com/en/products/detail/microchip-technology/PIC12F1571-I-MS/4739306</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="RA5" type="unspecified"/>
+        <pin num="3" name="RA4" type="unspecified"/>
+        <pin num="4" name="RA3/MCLR/VPP" type="unspecified"/>
+        <pin num="5" name="RA2" type="unspecified"/>
+        <pin num="6" name="RA1/ICSPCLK" type="unspecified"/>
+        <pin num="7" name="RA0/ICSPDAT" type="unspecified"/>
+        <pin num="8" name="VSS" type="power_out"/>
+      </pins>
+    </libpart>
+    <libpart lib="GymTimer" part="PICprogrammingheader">
+      <fields>
+        <field name="Reference">P</field>
+        <field name="Value">PICprogrammingheader</field>
+        <field name="Footprint">Library:PIC Programming header</field>
+      </fields>
+      <pins>
+        <pin num="1" name="MCLR_N" type="unspecified"/>
+        <pin num="2" name="VDD" type="unspecified"/>
+        <pin num="3" name="GND" type="unspecified"/>
+        <pin num="4" name="PGD" type="unspecified"/>
+        <pin num="5" name="PGC" type="unspecified"/>
+      </pins>
+    </libpart>
+    <libpart lib="GymTimer" part="VibrationDCmotor">
+      <fields>
+        <field name="Reference">M</field>
+        <field name="Value">VibrationDCmotor</field>
+        <field name="Footprint">Library:Z4TH7B2120042P</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="power_in"/>
+        <pin num="2" name="-" type="power_out"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="GymTimer">
+      <uri>C:\Users\fernau\OneDrive - F5, Inc\Desktop\LunchTimeProjects\GymTimer\GymTimer\pcb/lib/GymTimer.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="3V">
+      <node ref="BT1" pin="1" pinfunction="+" pintype="power_out"/>
+      <node ref="C1" pin="1" pinfunction="1" pintype="unspecified"/>
+      <node ref="R1" pin="1" pinfunction="1" pintype="unspecified"/>
+      <node ref="U1" pin="1" pinfunction="VDD" pintype="power_in"/>
+    </net>
+    <net code="2" name="GND">
+      <node ref="BT1" pin="2" pinfunction="-" pintype="power_in"/>
+      <node ref="C1" pin="2" pinfunction="2" pintype="unspecified"/>
+      <node ref="S1" pin="1" pinfunction="A" pintype="unspecified"/>
+      <node ref="S1" pin="2" pinfunction="A" pintype="unspecified"/>
+      <node ref="U1" pin="8" pinfunction="VSS" pintype="power_out"/>
+    </net>
+    <net code="3" name="Net-(M1-+)">
+      <node ref="C2" pin="2" pinfunction="2" pintype="unspecified"/>
+      <node ref="D1" pin="1" pinfunction="1" pintype="unspecified"/>
+      <node ref="M1" pin="1" pinfunction="+" pintype="power_in"/>
+      <node ref="U1" pin="2" pinfunction="RA5" pintype="unspecified"/>
+    </net>
+    <net code="4" name="Net-(M1--)">
+      <node ref="C2" pin="1" pinfunction="1" pintype="unspecified"/>
+      <node ref="D1" pin="2" pinfunction="2" pintype="unspecified"/>
+      <node ref="M1" pin="2" pinfunction="-" pintype="power_out"/>
+      <node ref="U1" pin="3" pinfunction="RA4" pintype="unspecified"/>
+    </net>
+    <net code="5" name="Net-(P1-MCLR_N)">
+      <node ref="R1" pin="2" pinfunction="2" pintype="unspecified"/>
+      <node ref="S1" pin="3" pinfunction="B" pintype="unspecified"/>
+      <node ref="S1" pin="4" pinfunction="B" pintype="unspecified"/>
+      <node ref="U1" pin="4" pinfunction="RA3/MCLR/VPP" pintype="unspecified"/>
+    </net>
+    <net code="6" name="Net-(P1-PGC)">
+      <node ref="U1" pin="6" pinfunction="RA1/ICSPCLK" pintype="unspecified"/>
+    </net>
+    <net code="7" name="Net-(P1-PGD)">
+      <node ref="U1" pin="7" pinfunction="RA0/ICSPDAT" pintype="unspecified"/>
+    </net>
+    <net code="8" name="unconnected-(U1-RA2)">
+      <node ref="U1" pin="5" pinfunction="RA2" pintype="unspecified"/>
+    </net>
+  </nets>
+</export>

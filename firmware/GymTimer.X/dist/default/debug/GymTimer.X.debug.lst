@@ -1,0 +1,2768 @@
+
+
+Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
+                                                                                               Mon May 22 16:08:33 2023
+
+Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
+     1                           	processor	12F1571
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	text2,local,class=CODE,merge=1,delta=2
+    10                           	psect	text3,local,class=CODE,merge=1,delta=2
+    11                           	psect	text4,local,class=CODE,merge=1,delta=2
+    12                           	psect	text5,local,class=CODE,merge=1,delta=2
+    13                           	psect	text6,local,class=CODE,merge=1,delta=2
+    14                           	psect	text7,local,class=CODE,merge=1,delta=2
+    15                           	psect	text8,local,class=CODE,merge=1,delta=2
+    16                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+    17                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    18                           	dabs	1,0x7E,2
+    19     0000                     
+    20                           ; Version 2.40
+    21                           ; Generated 17/11/2021 GMT
+    22                           ; 
+    23                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    24                           ; All rights reserved.
+    25                           ; 
+    26                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    27                           ; 
+    28                           ; Redistribution and use in source and binary forms, with or without modification, are
+    29                           ; permitted provided that the following conditions are met:
+    30                           ; 
+    31                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    32                           ;        conditions and the following disclaimer.
+    33                           ; 
+    34                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    35                           ;        of conditions and the following disclaimer in the documentation and/or other
+    36                           ;        materials provided with the distribution. Publication is not required when
+    37                           ;        this file is used in an embedded application.
+    38                           ; 
+    39                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    40                           ;        software without specific prior written permission.
+    41                           ; 
+    42                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    43                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    44                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    45                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    46                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    47                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    48                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    49                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    50                           ; 
+    51                           ; 
+    52                           ; Code-generator required, PIC12F1571 Definitions
+    53                           ; 
+    54                           ; SFR Addresses
+    55     0000                     	;# 
+    56     0001                     	;# 
+    57     0002                     	;# 
+    58     0003                     	;# 
+    59     0004                     	;# 
+    60     0005                     	;# 
+    61     0006                     	;# 
+    62     0007                     	;# 
+    63     0008                     	;# 
+    64     0009                     	;# 
+    65     000A                     	;# 
+    66     000B                     	;# 
+    67     000C                     	;# 
+    68     0011                     	;# 
+    69     0012                     	;# 
+    70     0013                     	;# 
+    71     0015                     	;# 
+    72     0016                     	;# 
+    73     0016                     	;# 
+    74     0017                     	;# 
+    75     0018                     	;# 
+    76     0019                     	;# 
+    77     001A                     	;# 
+    78     001B                     	;# 
+    79     001C                     	;# 
+    80     008C                     	;# 
+    81     0091                     	;# 
+    82     0092                     	;# 
+    83     0093                     	;# 
+    84     0095                     	;# 
+    85     0096                     	;# 
+    86     0097                     	;# 
+    87     0098                     	;# 
+    88     0099                     	;# 
+    89     009A                     	;# 
+    90     009B                     	;# 
+    91     009B                     	;# 
+    92     009C                     	;# 
+    93     009D                     	;# 
+    94     009E                     	;# 
+    95     009F                     	;# 
+    96     010C                     	;# 
+    97     0111                     	;# 
+    98     0112                     	;# 
+    99     0115                     	;# 
+   100     0116                     	;# 
+   101     0117                     	;# 
+   102     0118                     	;# 
+   103     0119                     	;# 
+   104     011D                     	;# 
+   105     011D                     	;# 
+   106     018C                     	;# 
+   107     0191                     	;# 
+   108     0191                     	;# 
+   109     0192                     	;# 
+   110     0193                     	;# 
+   111     0193                     	;# 
+   112     0194                     	;# 
+   113     0195                     	;# 
+   114     0196                     	;# 
+   115     0197                     	;# 
+   116     020C                     	;# 
+   117     028C                     	;# 
+   118     030C                     	;# 
+   119     038C                     	;# 
+   120     0391                     	;# 
+   121     0392                     	;# 
+   122     0393                     	;# 
+   123     0691                     	;# 
+   124     0692                     	;# 
+   125     0693                     	;# 
+   126     0694                     	;# 
+   127     0695                     	;# 
+   128     0D8E                     	;# 
+   129     0D8F                     	;# 
+   130     0D90                     	;# 
+   131     0D91                     	;# 
+   132     0D91                     	;# 
+   133     0D92                     	;# 
+   134     0D93                     	;# 
+   135     0D93                     	;# 
+   136     0D94                     	;# 
+   137     0D95                     	;# 
+   138     0D95                     	;# 
+   139     0D96                     	;# 
+   140     0D97                     	;# 
+   141     0D97                     	;# 
+   142     0D98                     	;# 
+   143     0D99                     	;# 
+   144     0D99                     	;# 
+   145     0D9A                     	;# 
+   146     0D9B                     	;# 
+   147     0D9C                     	;# 
+   148     0D9C                     	;# 
+   149     0D9D                     	;# 
+   150     0D9D                     	;# 
+   151     0D9E                     	;# 
+   152     0D9F                     	;# 
+   153     0DA0                     	;# 
+   154     0DA1                     	;# 
+   155     0DA1                     	;# 
+   156     0DA2                     	;# 
+   157     0DA3                     	;# 
+   158     0DA3                     	;# 
+   159     0DA4                     	;# 
+   160     0DA5                     	;# 
+   161     0DA5                     	;# 
+   162     0DA6                     	;# 
+   163     0DA7                     	;# 
+   164     0DA7                     	;# 
+   165     0DA8                     	;# 
+   166     0DA9                     	;# 
+   167     0DA9                     	;# 
+   168     0DAA                     	;# 
+   169     0DAB                     	;# 
+   170     0DAC                     	;# 
+   171     0DAC                     	;# 
+   172     0DAD                     	;# 
+   173     0DAD                     	;# 
+   174     0DAE                     	;# 
+   175     0DAF                     	;# 
+   176     0DB0                     	;# 
+   177     0DB1                     	;# 
+   178     0DB1                     	;# 
+   179     0DB2                     	;# 
+   180     0DB3                     	;# 
+   181     0DB3                     	;# 
+   182     0DB4                     	;# 
+   183     0DB5                     	;# 
+   184     0DB5                     	;# 
+   185     0DB6                     	;# 
+   186     0DB7                     	;# 
+   187     0DB7                     	;# 
+   188     0DB8                     	;# 
+   189     0DB9                     	;# 
+   190     0DB9                     	;# 
+   191     0DBA                     	;# 
+   192     0DBB                     	;# 
+   193     0DBC                     	;# 
+   194     0DBC                     	;# 
+   195     0DBD                     	;# 
+   196     0DBD                     	;# 
+   197     0DBE                     	;# 
+   198     0DBF                     	;# 
+   199     0DC0                     	;# 
+   200     0FE4                     	;# 
+   201     0FE5                     	;# 
+   202     0FE6                     	;# 
+   203     0FE7                     	;# 
+   204     0FE8                     	;# 
+   205     0FE8                     	;# 
+   206     0FE9                     	;# 
+   207     0FEA                     	;# 
+   208     0FEA                     	;# 
+   209     0FEB                     	;# 
+   210     0FED                     	;# 
+   211     0FEE                     	;# 
+   212     0FEE                     	;# 
+   213     0FEF                     	;# 
+   214     0000                     	;# 
+   215     0001                     	;# 
+   216     0002                     	;# 
+   217     0003                     	;# 
+   218     0004                     	;# 
+   219     0005                     	;# 
+   220     0006                     	;# 
+   221     0007                     	;# 
+   222     0008                     	;# 
+   223     0009                     	;# 
+   224     000A                     	;# 
+   225     000B                     	;# 
+   226     000C                     	;# 
+   227     0011                     	;# 
+   228     0012                     	;# 
+   229     0013                     	;# 
+   230     0015                     	;# 
+   231     0016                     	;# 
+   232     0016                     	;# 
+   233     0017                     	;# 
+   234     0018                     	;# 
+   235     0019                     	;# 
+   236     001A                     	;# 
+   237     001B                     	;# 
+   238     001C                     	;# 
+   239     008C                     	;# 
+   240     0091                     	;# 
+   241     0092                     	;# 
+   242     0093                     	;# 
+   243     0095                     	;# 
+   244     0096                     	;# 
+   245     0097                     	;# 
+   246     0098                     	;# 
+   247     0099                     	;# 
+   248     009A                     	;# 
+   249     009B                     	;# 
+   250     009B                     	;# 
+   251     009C                     	;# 
+   252     009D                     	;# 
+   253     009E                     	;# 
+   254     009F                     	;# 
+   255     010C                     	;# 
+   256     0111                     	;# 
+   257     0112                     	;# 
+   258     0115                     	;# 
+   259     0116                     	;# 
+   260     0117                     	;# 
+   261     0118                     	;# 
+   262     0119                     	;# 
+   263     011D                     	;# 
+   264     011D                     	;# 
+   265     018C                     	;# 
+   266     0191                     	;# 
+   267     0191                     	;# 
+   268     0192                     	;# 
+   269     0193                     	;# 
+   270     0193                     	;# 
+   271     0194                     	;# 
+   272     0195                     	;# 
+   273     0196                     	;# 
+   274     0197                     	;# 
+   275     020C                     	;# 
+   276     028C                     	;# 
+   277     030C                     	;# 
+   278     038C                     	;# 
+   279     0391                     	;# 
+   280     0392                     	;# 
+   281     0393                     	;# 
+   282     0691                     	;# 
+   283     0692                     	;# 
+   284     0693                     	;# 
+   285     0694                     	;# 
+   286     0695                     	;# 
+   287     0D8E                     	;# 
+   288     0D8F                     	;# 
+   289     0D90                     	;# 
+   290     0D91                     	;# 
+   291     0D91                     	;# 
+   292     0D92                     	;# 
+   293     0D93                     	;# 
+   294     0D93                     	;# 
+   295     0D94                     	;# 
+   296     0D95                     	;# 
+   297     0D95                     	;# 
+   298     0D96                     	;# 
+   299     0D97                     	;# 
+   300     0D97                     	;# 
+   301     0D98                     	;# 
+   302     0D99                     	;# 
+   303     0D99                     	;# 
+   304     0D9A                     	;# 
+   305     0D9B                     	;# 
+   306     0D9C                     	;# 
+   307     0D9C                     	;# 
+   308     0D9D                     	;# 
+   309     0D9D                     	;# 
+   310     0D9E                     	;# 
+   311     0D9F                     	;# 
+   312     0DA0                     	;# 
+   313     0DA1                     	;# 
+   314     0DA1                     	;# 
+   315     0DA2                     	;# 
+   316     0DA3                     	;# 
+   317     0DA3                     	;# 
+   318     0DA4                     	;# 
+   319     0DA5                     	;# 
+   320     0DA5                     	;# 
+   321     0DA6                     	;# 
+   322     0DA7                     	;# 
+   323     0DA7                     	;# 
+   324     0DA8                     	;# 
+   325     0DA9                     	;# 
+   326     0DA9                     	;# 
+   327     0DAA                     	;# 
+   328     0DAB                     	;# 
+   329     0DAC                     	;# 
+   330     0DAC                     	;# 
+   331     0DAD                     	;# 
+   332     0DAD                     	;# 
+   333     0DAE                     	;# 
+   334     0DAF                     	;# 
+   335     0DB0                     	;# 
+   336     0DB1                     	;# 
+   337     0DB1                     	;# 
+   338     0DB2                     	;# 
+   339     0DB3                     	;# 
+   340     0DB3                     	;# 
+   341     0DB4                     	;# 
+   342     0DB5                     	;# 
+   343     0DB5                     	;# 
+   344     0DB6                     	;# 
+   345     0DB7                     	;# 
+   346     0DB7                     	;# 
+   347     0DB8                     	;# 
+   348     0DB9                     	;# 
+   349     0DB9                     	;# 
+   350     0DBA                     	;# 
+   351     0DBB                     	;# 
+   352     0DBC                     	;# 
+   353     0DBC                     	;# 
+   354     0DBD                     	;# 
+   355     0DBD                     	;# 
+   356     0DBE                     	;# 
+   357     0DBF                     	;# 
+   358     0DC0                     	;# 
+   359     0FE4                     	;# 
+   360     0FE5                     	;# 
+   361     0FE6                     	;# 
+   362     0FE7                     	;# 
+   363     0FE8                     	;# 
+   364     0FE8                     	;# 
+   365     0FE9                     	;# 
+   366     0FEA                     	;# 
+   367     0FEA                     	;# 
+   368     0FEB                     	;# 
+   369     0FED                     	;# 
+   370     0FEE                     	;# 
+   371     0FEE                     	;# 
+   372     0FEF                     	;# 
+   373     0000                     	;# 
+   374     0001                     	;# 
+   375     0002                     	;# 
+   376     0003                     	;# 
+   377     0004                     	;# 
+   378     0005                     	;# 
+   379     0006                     	;# 
+   380     0007                     	;# 
+   381     0008                     	;# 
+   382     0009                     	;# 
+   383     000A                     	;# 
+   384     000B                     	;# 
+   385     000C                     	;# 
+   386     0011                     	;# 
+   387     0012                     	;# 
+   388     0013                     	;# 
+   389     0015                     	;# 
+   390     0016                     	;# 
+   391     0016                     	;# 
+   392     0017                     	;# 
+   393     0018                     	;# 
+   394     0019                     	;# 
+   395     001A                     	;# 
+   396     001B                     	;# 
+   397     001C                     	;# 
+   398     008C                     	;# 
+   399     0091                     	;# 
+   400     0092                     	;# 
+   401     0093                     	;# 
+   402     0095                     	;# 
+   403     0096                     	;# 
+   404     0097                     	;# 
+   405     0098                     	;# 
+   406     0099                     	;# 
+   407     009A                     	;# 
+   408     009B                     	;# 
+   409     009B                     	;# 
+   410     009C                     	;# 
+   411     009D                     	;# 
+   412     009E                     	;# 
+   413     009F                     	;# 
+   414     010C                     	;# 
+   415     0111                     	;# 
+   416     0112                     	;# 
+   417     0115                     	;# 
+   418     0116                     	;# 
+   419     0117                     	;# 
+   420     0118                     	;# 
+   421     0119                     	;# 
+   422     011D                     	;# 
+   423     011D                     	;# 
+   424     018C                     	;# 
+   425     0191                     	;# 
+   426     0191                     	;# 
+   427     0192                     	;# 
+   428     0193                     	;# 
+   429     0193                     	;# 
+   430     0194                     	;# 
+   431     0195                     	;# 
+   432     0196                     	;# 
+   433     0197                     	;# 
+   434     020C                     	;# 
+   435     028C                     	;# 
+   436     030C                     	;# 
+   437     038C                     	;# 
+   438     0391                     	;# 
+   439     0392                     	;# 
+   440     0393                     	;# 
+   441     0691                     	;# 
+   442     0692                     	;# 
+   443     0693                     	;# 
+   444     0694                     	;# 
+   445     0695                     	;# 
+   446     0D8E                     	;# 
+   447     0D8F                     	;# 
+   448     0D90                     	;# 
+   449     0D91                     	;# 
+   450     0D91                     	;# 
+   451     0D92                     	;# 
+   452     0D93                     	;# 
+   453     0D93                     	;# 
+   454     0D94                     	;# 
+   455     0D95                     	;# 
+   456     0D95                     	;# 
+   457     0D96                     	;# 
+   458     0D97                     	;# 
+   459     0D97                     	;# 
+   460     0D98                     	;# 
+   461     0D99                     	;# 
+   462     0D99                     	;# 
+   463     0D9A                     	;# 
+   464     0D9B                     	;# 
+   465     0D9C                     	;# 
+   466     0D9C                     	;# 
+   467     0D9D                     	;# 
+   468     0D9D                     	;# 
+   469     0D9E                     	;# 
+   470     0D9F                     	;# 
+   471     0DA0                     	;# 
+   472     0DA1                     	;# 
+   473     0DA1                     	;# 
+   474     0DA2                     	;# 
+   475     0DA3                     	;# 
+   476     0DA3                     	;# 
+   477     0DA4                     	;# 
+   478     0DA5                     	;# 
+   479     0DA5                     	;# 
+   480     0DA6                     	;# 
+   481     0DA7                     	;# 
+   482     0DA7                     	;# 
+   483     0DA8                     	;# 
+   484     0DA9                     	;# 
+   485     0DA9                     	;# 
+   486     0DAA                     	;# 
+   487     0DAB                     	;# 
+   488     0DAC                     	;# 
+   489     0DAC                     	;# 
+   490     0DAD                     	;# 
+   491     0DAD                     	;# 
+   492     0DAE                     	;# 
+   493     0DAF                     	;# 
+   494     0DB0                     	;# 
+   495     0DB1                     	;# 
+   496     0DB1                     	;# 
+   497     0DB2                     	;# 
+   498     0DB3                     	;# 
+   499     0DB3                     	;# 
+   500     0DB4                     	;# 
+   501     0DB5                     	;# 
+   502     0DB5                     	;# 
+   503     0DB6                     	;# 
+   504     0DB7                     	;# 
+   505     0DB7                     	;# 
+   506     0DB8                     	;# 
+   507     0DB9                     	;# 
+   508     0DB9                     	;# 
+   509     0DBA                     	;# 
+   510     0DBB                     	;# 
+   511     0DBC                     	;# 
+   512     0DBC                     	;# 
+   513     0DBD                     	;# 
+   514     0DBD                     	;# 
+   515     0DBE                     	;# 
+   516     0DBF                     	;# 
+   517     0DC0                     	;# 
+   518     0FE4                     	;# 
+   519     0FE5                     	;# 
+   520     0FE6                     	;# 
+   521     0FE7                     	;# 
+   522     0FE8                     	;# 
+   523     0FE8                     	;# 
+   524     0FE9                     	;# 
+   525     0FEA                     	;# 
+   526     0FEA                     	;# 
+   527     0FEB                     	;# 
+   528     0FED                     	;# 
+   529     0FEE                     	;# 
+   530     0FEE                     	;# 
+   531     0FEF                     	;# 
+   532     0000                     	;# 
+   533     0001                     	;# 
+   534     0002                     	;# 
+   535     0003                     	;# 
+   536     0004                     	;# 
+   537     0005                     	;# 
+   538     0006                     	;# 
+   539     0007                     	;# 
+   540     0008                     	;# 
+   541     0009                     	;# 
+   542     000A                     	;# 
+   543     000B                     	;# 
+   544     000C                     	;# 
+   545     0011                     	;# 
+   546     0012                     	;# 
+   547     0013                     	;# 
+   548     0015                     	;# 
+   549     0016                     	;# 
+   550     0016                     	;# 
+   551     0017                     	;# 
+   552     0018                     	;# 
+   553     0019                     	;# 
+   554     001A                     	;# 
+   555     001B                     	;# 
+   556     001C                     	;# 
+   557     008C                     	;# 
+   558     0091                     	;# 
+   559     0092                     	;# 
+   560     0093                     	;# 
+   561     0095                     	;# 
+   562     0096                     	;# 
+   563     0097                     	;# 
+   564     0098                     	;# 
+   565     0099                     	;# 
+   566     009A                     	;# 
+   567     009B                     	;# 
+   568     009B                     	;# 
+   569     009C                     	;# 
+   570     009D                     	;# 
+   571     009E                     	;# 
+   572     009F                     	;# 
+   573     010C                     	;# 
+   574     0111                     	;# 
+   575     0112                     	;# 
+   576     0115                     	;# 
+   577     0116                     	;# 
+   578     0117                     	;# 
+   579     0118                     	;# 
+   580     0119                     	;# 
+   581     011D                     	;# 
+   582     011D                     	;# 
+   583     018C                     	;# 
+   584     0191                     	;# 
+   585     0191                     	;# 
+   586     0192                     	;# 
+   587     0193                     	;# 
+   588     0193                     	;# 
+   589     0194                     	;# 
+   590     0195                     	;# 
+   591     0196                     	;# 
+   592     0197                     	;# 
+   593     020C                     	;# 
+   594     028C                     	;# 
+   595     030C                     	;# 
+   596     038C                     	;# 
+   597     0391                     	;# 
+   598     0392                     	;# 
+   599     0393                     	;# 
+   600     0691                     	;# 
+   601     0692                     	;# 
+   602     0693                     	;# 
+   603     0694                     	;# 
+   604     0695                     	;# 
+   605     0D8E                     	;# 
+   606     0D8F                     	;# 
+   607     0D90                     	;# 
+   608     0D91                     	;# 
+   609     0D91                     	;# 
+   610     0D92                     	;# 
+   611     0D93                     	;# 
+   612     0D93                     	;# 
+   613     0D94                     	;# 
+   614     0D95                     	;# 
+   615     0D95                     	;# 
+   616     0D96                     	;# 
+   617     0D97                     	;# 
+   618     0D97                     	;# 
+   619     0D98                     	;# 
+   620     0D99                     	;# 
+   621     0D99                     	;# 
+   622     0D9A                     	;# 
+   623     0D9B                     	;# 
+   624     0D9C                     	;# 
+   625     0D9C                     	;# 
+   626     0D9D                     	;# 
+   627     0D9D                     	;# 
+   628     0D9E                     	;# 
+   629     0D9F                     	;# 
+   630     0DA0                     	;# 
+   631     0DA1                     	;# 
+   632     0DA1                     	;# 
+   633     0DA2                     	;# 
+   634     0DA3                     	;# 
+   635     0DA3                     	;# 
+   636     0DA4                     	;# 
+   637     0DA5                     	;# 
+   638     0DA5                     	;# 
+   639     0DA6                     	;# 
+   640     0DA7                     	;# 
+   641     0DA7                     	;# 
+   642     0DA8                     	;# 
+   643     0DA9                     	;# 
+   644     0DA9                     	;# 
+   645     0DAA                     	;# 
+   646     0DAB                     	;# 
+   647     0DAC                     	;# 
+   648     0DAC                     	;# 
+   649     0DAD                     	;# 
+   650     0DAD                     	;# 
+   651     0DAE                     	;# 
+   652     0DAF                     	;# 
+   653     0DB0                     	;# 
+   654     0DB1                     	;# 
+   655     0DB1                     	;# 
+   656     0DB2                     	;# 
+   657     0DB3                     	;# 
+   658     0DB3                     	;# 
+   659     0DB4                     	;# 
+   660     0DB5                     	;# 
+   661     0DB5                     	;# 
+   662     0DB6                     	;# 
+   663     0DB7                     	;# 
+   664     0DB7                     	;# 
+   665     0DB8                     	;# 
+   666     0DB9                     	;# 
+   667     0DB9                     	;# 
+   668     0DBA                     	;# 
+   669     0DBB                     	;# 
+   670     0DBC                     	;# 
+   671     0DBC                     	;# 
+   672     0DBD                     	;# 
+   673     0DBD                     	;# 
+   674     0DBE                     	;# 
+   675     0DBF                     	;# 
+   676     0DC0                     	;# 
+   677     0FE4                     	;# 
+   678     0FE5                     	;# 
+   679     0FE6                     	;# 
+   680     0FE7                     	;# 
+   681     0FE8                     	;# 
+   682     0FE8                     	;# 
+   683     0FE9                     	;# 
+   684     0FEA                     	;# 
+   685     0FEA                     	;# 
+   686     0FEB                     	;# 
+   687     0FED                     	;# 
+   688     0FEE                     	;# 
+   689     0FEE                     	;# 
+   690     0FEF                     	;# 
+   691     000B                     _INTCONbits	set	11
+   692     0095                     _OPTION_REGbits	set	149
+   693     008C                     _TRISA	set	140
+   694     0097                     _WDTCON	set	151
+   695     0098                     _OSCTUNE	set	152
+   696     0099                     _OSCCON	set	153
+   697     010C                     _LATAbits	set	268
+   698     011D                     _APFCON	set	285
+   699     010C                     _LATA	set	268
+   700     0116                     _BORCON	set	278
+   701     0196                     _PMCON2	set	406
+   702     0193                     _PMDATL	set	403
+   703     0194                     _PMDATH	set	404
+   704     0195                     _PMCON1bits	set	405
+   705     0192                     _PMADRH	set	402
+   706     0191                     _PMADRL	set	401
+   707     018C                     _ANSELA	set	396
+   708     020C                     _WPUA	set	524
+   709     028C                     _ODCONA	set	652
+   710     030C                     _SLRCONA	set	780
+   711     038C                     _INLVLA	set	908
+   712                           
+   713                           	psect	cinit
+   714     03FE                     start_initialization:	
+   715                           ; #config settings
+   716                           
+   717     03FE                     __initialization:
+   718     03FE                     end_of_initialization:	
+   719                           ;End of C runtime variable initialization code
+   720                           
+   721     03FE                     __end_of__initialization:
+   722     03FE  0020               	movlb	0
+   723     03FF  2A58               	ljmp	_main	;jump to C main() function
+   724                           
+   725                           	psect	cstackCOMMON
+   726     0070                     __pcstackCOMMON:
+   727     0070                     ?_PIN_MANAGER_Initialize:
+   728     0070                     ??_PIN_MANAGER_Initialize:	
+   729                           ; 1 bytes @ 0x0
+   730                           
+   731     0070                     ?_OSCILLATOR_Initialize:	
+   732                           ; 1 bytes @ 0x0
+   733                           
+   734     0070                     ??_OSCILLATOR_Initialize:	
+   735                           ; 1 bytes @ 0x0
+   736                           
+   737     0070                     ?_WDT_Initialize:	
+   738                           ; 1 bytes @ 0x0
+   739                           
+   740     0070                     ??_WDT_Initialize:	
+   741                           ; 1 bytes @ 0x0
+   742                           
+   743     0070                     ?_FLASH_EraseBlock:	
+   744                           ; 1 bytes @ 0x0
+   745                           
+   746     0070                     ?_SYSTEM_Initialize:	
+   747                           ; 1 bytes @ 0x0
+   748                           
+   749     0070                     ??_SYSTEM_Initialize:	
+   750                           ; 1 bytes @ 0x0
+   751                           
+   752     0070                     ?_main:	
+   753                           ; 1 bytes @ 0x0
+   754                           
+   755     0070                     ?_FLASH_ReadWord:	
+   756                           ; 1 bytes @ 0x0
+   757                           
+   758     0070                     FLASH_ReadWord@flashAddr:	
+   759                           ; 2 bytes @ 0x0
+   760                           
+   761     0070                     FLASH_EraseBlock@startAddr:	
+   762                           ; 2 bytes @ 0x0
+   763                           
+   764                           
+   765                           ; 2 bytes @ 0x0
+   766     0070                     	ds	2
+   767     0072                     ??_FLASH_EraseBlock:
+   768     0072                     ??_FLASH_ReadWord:	
+   769                           ; 1 bytes @ 0x2
+   770                           
+   771     0072                     FLASH_ReadWord@GIEBitValue:	
+   772                           ; 1 bytes @ 0x2
+   773                           
+   774     0072                     FLASH_EraseBlock@GIEBitValue:	
+   775                           ; 1 bytes @ 0x2
+   776                           
+   777                           
+   778                           ; 1 bytes @ 0x2
+   779     0072                     	ds	1
+   780     0073                     ?_FLASH_WriteBlock:
+   781     0073                     FLASH_WriteBlock@writeAddr:	
+   782                           ; 1 bytes @ 0x3
+   783                           
+   784                           
+   785                           ; 2 bytes @ 0x3
+   786     0073                     	ds	2
+   787     0075                     FLASH_WriteBlock@flashWordArray:
+   788                           
+   789                           ; 1 bytes @ 0x5
+   790     0075                     	ds	1
+   791     0076                     ??_FLASH_WriteBlock:
+   792                           
+   793                           ; 1 bytes @ 0x6
+   794     0076                     	ds	3
+   795     0079                     FLASH_WriteBlock@blockStartAddr:
+   796                           
+   797                           ; 2 bytes @ 0x9
+   798     0079                     	ds	2
+   799     007B                     FLASH_WriteBlock@GIEBitValue:
+   800                           
+   801                           ; 1 bytes @ 0xB
+   802     007B                     	ds	1
+   803     007C                     FLASH_WriteBlock@i:
+   804                           
+   805                           ; 1 bytes @ 0xC
+   806     007C                     	ds	1
+   807     007D                     ??_FLASH_WriteWord:
+   808                           
+   809                           ; 1 bytes @ 0xD
+   810     007D                     	ds	1
+   811                           
+   812                           	psect	cstackBANK0
+   813     0020                     __pcstackBANK0:
+   814     0020                     ?_FLASH_WriteWord:
+   815     0020                     FLASH_WriteWord@flashAddr:	
+   816                           ; 1 bytes @ 0x0
+   817                           
+   818                           
+   819                           ; 2 bytes @ 0x0
+   820     0020                     	ds	2
+   821     0022                     FLASH_WriteWord@ramBuf:
+   822                           
+   823                           ; 1 bytes @ 0x2
+   824     0022                     	ds	1
+   825     0023                     FLASH_WriteWord@word:
+   826                           
+   827                           ; 2 bytes @ 0x3
+   828     0023                     	ds	2
+   829     0025                     FLASH_WriteWord@offset:
+   830                           
+   831                           ; 1 bytes @ 0x5
+   832     0025                     	ds	1
+   833     0026                     FLASH_WriteWord@blockStartAddr:
+   834                           
+   835                           ; 2 bytes @ 0x6
+   836     0026                     	ds	2
+   837     0028                     FLASH_WriteWord@i:
+   838                           
+   839                           ; 1 bytes @ 0x8
+   840     0028                     	ds	1
+   841     0029                     ??_main:
+   842                           
+   843                           ; 1 bytes @ 0x9
+   844     0029                     	ds	1
+   845     002A                     main@Buf:
+   846                           
+   847                           ; 32 bytes @ 0xA
+   848     002A                     	ds	32
+   849     004A                     main@i:
+   850                           
+   851                           ; 1 bytes @ 0x2A
+   852     004A                     	ds	1
+   853     004B                     main@flashAddr:
+   854                           
+   855                           ; 2 bytes @ 0x2B
+   856     004B                     	ds	2
+   857     004D                     main@readWord:
+   858                           
+   859                           ; 2 bytes @ 0x2D
+   860     004D                     	ds	2
+   861                           
+   862                           	psect	maintext
+   863     0258                     __pmaintext:	
+   864 ;;
+   865 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   866 ;;
+   867 ;; *************** function _main *****************
+   868 ;; Defined at:
+   869 ;;		line 49 in file "main.c"
+   870 ;; Parameters:    Size  Location     Type
+   871 ;;		None
+   872 ;; Auto vars:     Size  Location     Type
+   873 ;;  i               1   42[BANK0 ] unsigned char 
+   874 ;;  Buf            32   10[BANK0 ] unsigned short [16]
+   875 ;;  readWord        2   45[BANK0 ] unsigned short 
+   876 ;;  flashAddr       2   43[BANK0 ] unsigned short 
+   877 ;; Return value:  Size  Location     Type
+   878 ;;                  1    wreg      void 
+   879 ;; Registers used:
+   880 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+   881 ;; Tracked objects:
+   882 ;;		On entry : B1F/0
+   883 ;;		On exit  : 0/0
+   884 ;;		Unchanged: 0/0
+   885 ;; Data sizes:     COMMON   BANK0   BANK1
+   886 ;;      Params:         0       0       0
+   887 ;;      Locals:         0      37       0
+   888 ;;      Temps:          0       1       0
+   889 ;;      Totals:         0      38       0
+   890 ;;Total ram usage:       38 bytes
+   891 ;; Hardware stack levels required when called: 3
+   892 ;; This function calls:
+   893 ;;		_FLASH_ReadWord
+   894 ;;		_FLASH_WriteWord
+   895 ;;		_SYSTEM_Initialize
+   896 ;; This function is called by:
+   897 ;;		Startup code after reset
+   898 ;; This function uses a non-reentrant model
+   899 ;;
+   900                           
+   901     0258                     _main:	
+   902                           ;psect for function _main
+   903                           
+   904     0258                     l1244:	
+   905                           ;incstack = 0
+   906                           ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
+   907                           
+   908                           
+   909                           ;main.c: 52:     SYSTEM_Initialize();
+   910     0258  3181  2166  3182   	fcall	_SYSTEM_Initialize
+   911     025B                     l1246:
+   912     025B                     l1248:
+   913                           
+   914                           ;main.c: 55:     uint16_t flashAddr = 0x01C0;
+   915     025B  30C0               	movlw	192
+   916     025C  0020               	movlb	0	; select bank0
+   917     025D  00CB               	movwf	main@flashAddr
+   918     025E  3001               	movlw	1
+   919     025F  00CC               	movwf	main@flashAddr+1
+   920     0260                     l1250:
+   921                           
+   922                           ;main.c: 57:     uint16_t Buf[16];;main.c: 60:     FLASH_WriteWord(flashAddr, Buf, readW
+      +                          ord);
+   923     0260  30C0               	movlw	192
+   924     0261  00A0               	movwf	FLASH_WriteWord@flashAddr
+   925     0262  3001               	movlw	1
+   926     0263  00A1               	movwf	FLASH_WriteWord@flashAddr+1
+   927     0264  302A               	movlw	(low (main@Buf| 0))& (0+255)
+   928     0265  00A2               	movwf	FLASH_WriteWord@ramBuf
+   929     0266  3005               	movlw	5
+   930     0267  00A3               	movwf	FLASH_WriteWord@word
+   931     0268  3000               	movlw	0
+   932     0269  00A4               	movwf	FLASH_WriteWord@word+1
+   933     026A  3181  21BB  3182   	fcall	_FLASH_WriteWord
+   934     026D                     l1252:
+   935     026D  30C0               	movlw	192
+   936     026E  00F0               	movwf	FLASH_ReadWord@flashAddr
+   937     026F  3001               	movlw	1
+   938     0270  00F1               	movwf	FLASH_ReadWord@flashAddr+1
+   939     0271  3181  2186  3182   	fcall	_FLASH_ReadWord
+   940     0274                     l1254:
+   941     0274  30C0               	movlw	192
+   942     0275  00F0               	movwf	FLASH_ReadWord@flashAddr
+   943     0276  3001               	movlw	1
+   944     0277  00F1               	movwf	FLASH_ReadWord@flashAddr+1
+   945     0278  3181  2186  3182   	fcall	_FLASH_ReadWord
+   946     027B                     l1256:
+   947     027B                     l1258:
+   948                           
+   949                           ;main.c: 65:     FLASH_WriteWord(flashAddr, Buf, readWord);
+   950     027B  30C0               	movlw	192
+   951     027C  0020               	movlb	0	; select bank0
+   952     027D  00A0               	movwf	FLASH_WriteWord@flashAddr
+   953     027E  3001               	movlw	1
+   954     027F  00A1               	movwf	FLASH_WriteWord@flashAddr+1
+   955     0280  302A               	movlw	(low (main@Buf| 0))& (0+255)
+   956     0281  00A2               	movwf	FLASH_WriteWord@ramBuf
+   957     0282  3004               	movlw	4
+   958     0283  00A3               	movwf	FLASH_WriteWord@word
+   959     0284  3000               	movlw	0
+   960     0285  00A4               	movwf	FLASH_WriteWord@word+1
+   961     0286  3181  21BB  3182   	fcall	_FLASH_WriteWord
+   962     0289                     l1260:
+   963     0289  30C0               	movlw	192
+   964     028A  00F0               	movwf	FLASH_ReadWord@flashAddr
+   965     028B  3001               	movlw	1
+   966     028C  00F1               	movwf	FLASH_ReadWord@flashAddr+1
+   967     028D  3181  2186  3182   	fcall	_FLASH_ReadWord
+   968     0290                     l1262:
+   969                           
+   970                           ;main.c: 68:     FLASH_WriteWord(flashAddr, Buf, 100);
+   971     0290  30C0               	movlw	192
+   972     0291  0020               	movlb	0	; select bank0
+   973     0292  00A0               	movwf	FLASH_WriteWord@flashAddr
+   974     0293  3001               	movlw	1
+   975     0294  00A1               	movwf	FLASH_WriteWord@flashAddr+1
+   976     0295  302A               	movlw	(low (main@Buf| 0))& (0+255)
+   977     0296  00A2               	movwf	FLASH_WriteWord@ramBuf
+   978     0297  3064               	movlw	100
+   979     0298  00A3               	movwf	FLASH_WriteWord@word
+   980     0299  3000               	movlw	0
+   981     029A  00A4               	movwf	FLASH_WriteWord@word+1
+   982     029B  3181  21BB  3182   	fcall	_FLASH_WriteWord
+   983     029E                     l1264:
+   984                           
+   985                           ;main.c: 69:     readWord = FLASH_ReadWord(flashAddr);
+   986     029E  30C0               	movlw	192
+   987     029F  00F0               	movwf	FLASH_ReadWord@flashAddr
+   988     02A0  3001               	movlw	1
+   989     02A1  00F1               	movwf	FLASH_ReadWord@flashAddr+1
+   990     02A2  3181  2186  3182   	fcall	_FLASH_ReadWord
+   991     02A5  0871               	movf	?_FLASH_ReadWord+1,w
+   992     02A6  0020               	movlb	0	; select bank0
+   993     02A7  00CE               	movwf	main@readWord+1
+   994     02A8  0870               	movf	?_FLASH_ReadWord,w
+   995     02A9  00CD               	movwf	main@readWord
+   996     02AA                     l1266:
+   997                           
+   998                           ;main.c: 72:     if((readWord > 0x0000) && (readWord < 0x0005))
+   999     02AA  084D               	movf	main@readWord,w
+  1000     02AB  044E               	iorwf	main@readWord+1,w
+  1001     02AC  1903               	btfsc	3,2
+  1002     02AD  2AAF               	goto	u131
+  1003     02AE  2AB0               	goto	u130
+  1004     02AF                     u131:
+  1005     02AF  2ACD               	goto	l1274
+  1006     02B0                     u130:
+  1007     02B0                     l1268:
+  1008     02B0  3000               	movlw	0
+  1009     02B1  024E               	subwf	main@readWord+1,w
+  1010     02B2  3005               	movlw	5
+  1011     02B3  1903               	skipnz
+  1012     02B4  024D               	subwf	main@readWord,w
+  1013     02B5  1803               	skipnc
+  1014     02B6  2AB8               	goto	u141
+  1015     02B7  2AB9               	goto	u140
+  1016     02B8                     u141:
+  1017     02B8  2ACD               	goto	l1274
+  1018     02B9                     u140:
+  1019     02B9                     l1270:
+  1020                           
+  1021                           ;main.c: 73:     {;main.c: 74:         readWord = readWord + 0x0001;
+  1022     02B9  084D               	movf	main@readWord,w
+  1023     02BA  3E01               	addlw	1
+  1024     02BB  00CD               	movwf	main@readWord
+  1025     02BC  3000               	movlw	0
+  1026     02BD  3D4E               	addwfc	main@readWord+1,w
+  1027     02BE  00CE               	movwf	main@readWord+1
+  1028     02BF                     l1272:
+  1029                           
+  1030                           ;main.c: 75:         FLASH_WriteWord(flashAddr, Buf, readWord);
+  1031     02BF  30C0               	movlw	192
+  1032     02C0  00A0               	movwf	FLASH_WriteWord@flashAddr
+  1033     02C1  3001               	movlw	1
+  1034     02C2  00A1               	movwf	FLASH_WriteWord@flashAddr+1
+  1035     02C3  302A               	movlw	(low (main@Buf| 0))& (0+255)
+  1036     02C4  00A2               	movwf	FLASH_WriteWord@ramBuf
+  1037     02C5  084E               	movf	main@readWord+1,w
+  1038     02C6  00A4               	movwf	FLASH_WriteWord@word+1
+  1039     02C7  084D               	movf	main@readWord,w
+  1040     02C8  00A3               	movwf	FLASH_WriteWord@word
+  1041     02C9  3181  21BB  3182   	fcall	_FLASH_WriteWord
+  1042                           
+  1043                           ;main.c: 76:     }
+  1044     02CC  2BBF               	goto	l1406
+  1045     02CD                     l1274:
+  1046                           
+  1047                           ;main.c: 78:     {;main.c: 79:         readWord = 0x0001;
+  1048     02CD  3001               	movlw	1
+  1049     02CE  00CD               	movwf	main@readWord
+  1050     02CF  3000               	movlw	0
+  1051     02D0  00CE               	movwf	main@readWord+1
+  1052     02D1                     l1276:
+  1053                           
+  1054                           ;main.c: 80:         FLASH_WriteWord(flashAddr, Buf, readWord);
+  1055     02D1  30C0               	movlw	192
+  1056     02D2  00A0               	movwf	FLASH_WriteWord@flashAddr
+  1057     02D3  3001               	movlw	1
+  1058     02D4  00A1               	movwf	FLASH_WriteWord@flashAddr+1
+  1059     02D5  302A               	movlw	(low (main@Buf| 0))& (0+255)
+  1060     02D6  00A2               	movwf	FLASH_WriteWord@ramBuf
+  1061     02D7  3001               	movlw	1
+  1062     02D8  00A3               	movwf	FLASH_WriteWord@word
+  1063     02D9  3000               	movlw	0
+  1064     02DA  00A4               	movwf	FLASH_WriteWord@word+1
+  1065     02DB  3181  21BB  3182   	fcall	_FLASH_WriteWord
+  1066     02DE  2BBF               	goto	l1406
+  1067     02DF                     l1278:
+  1068                           
+  1069                           ;main.c: 88:             uint8_t i = 0;
+  1070     02DF  01CA               	clrf	main@i
+  1071                           
+  1072                           ;main.c: 89:             while (i <= 10)
+  1073     02E0  2AF4               	goto	l1292
+  1074     02E1                     l1280:
+  1075                           
+  1076                           ;main.c: 90:             {;main.c: 91:                 _delay((unsigned long)((100)*(310
+      +                          00/4000.0)));
+  1077     02E1  309B               	movlw	155
+  1078     02E2                     u177:
+  1079     02E2  3200               	nop2
+  1080     02E3  0B89               	decfsz	9,f
+  1081     02E4  2AE2               	goto	u177
+  1082     02E5                     l1282:
+  1083     02E5  0022               	movlb	2	; select bank2
+  1084     02E6  120C               	bcf	12,4	;volatile
+  1085     02E7                     l1284:
+  1086     02E7  168C               	bsf	12,5	;volatile
+  1087     02E8                     l110:
+  1088                           
+  1089                           ;main.c: 96:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1090     02E8  309B               	movlw	155
+  1091     02E9                     u187:
+  1092     02E9  3200               	nop2
+  1093     02EA  0B89               	decfsz	9,f
+  1094     02EB  2AE9               	goto	u187
+  1095     02EC                     l1286:
+  1096     02EC  0022               	movlb	2	; select bank2
+  1097     02ED  160C               	bsf	12,4	;volatile
+  1098     02EE                     l1288:
+  1099     02EE  168C               	bsf	12,5	;volatile
+  1100     02EF                     l1290:
+  1101                           
+  1102                           ;main.c: 101:                 i++;
+  1103     02EF  3001               	movlw	1
+  1104     02F0  0020               	movlb	0	; select bank0
+  1105     02F1  00A9               	movwf	??_main
+  1106     02F2  0829               	movf	??_main,w
+  1107     02F3  07CA               	addwf	main@i,f
+  1108     02F4                     l1292:
+  1109                           
+  1110                           ;main.c: 89:             while (i <= 10)
+  1111     02F4  300B               	movlw	11
+  1112     02F5  024A               	subwf	main@i,w
+  1113     02F6  1C03               	skipc
+  1114     02F7  2AF9               	goto	u151
+  1115     02F8  2AFA               	goto	u150
+  1116     02F9                     u151:
+  1117     02F9  2AE1               	goto	l1280
+  1118     02FA                     u150:
+  1119     02FA                     l115:
+  1120     02FA  0063               	sleep	;# 
+  1121                           
+  1122                           ;main.c: 105:           break;
+  1123     02FB  2BD9               	goto	l1408
+  1124     02FC                     l118:	
+  1125                           ;main.c: 107:                 do { LATAbits.LATA4 = 0; } while(0);
+  1126                           
+  1127     02FC  0022               	movlb	2	; select bank2
+  1128     02FD  120C               	bcf	12,4	;volatile
+  1129     02FE                     l120:	
+  1130                           ;main.c: 108:                 do { LATAbits.LATA5 = 1; } while(0);
+  1131                           
+  1132     02FE  168C               	bsf	12,5	;volatile
+  1133     02FF                     l1294:
+  1134                           
+  1135                           ;main.c: 109:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1136     02FF  309B               	movlw	155
+  1137     0300                     u197:
+  1138     0300  3200               	nop2
+  1139     0301  0B89               	decfsz	9,f
+  1140     0302  2B00               	goto	u197
+  1141     0303                     l1296:
+  1142     0303  0022               	movlb	2	; select bank2
+  1143     0304  160C               	bsf	12,4	;volatile
+  1144     0305                     l1298:
+  1145     0305  168C               	bsf	12,5	;volatile
+  1146     0306  2BD9               	goto	l1408
+  1147     0307                     l127:	
+  1148                           ;main.c: 114:                 do { LATAbits.LATA4 = 0; } while(0);
+  1149                           
+  1150     0307  0022               	movlb	2	; select bank2
+  1151     0308  120C               	bcf	12,4	;volatile
+  1152     0309                     l129:	
+  1153                           ;main.c: 115:                 do { LATAbits.LATA5 = 1; } while(0);
+  1154                           
+  1155     0309  168C               	bsf	12,5	;volatile
+  1156     030A                     l1300:
+  1157                           
+  1158                           ;main.c: 116:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1159     030A  309B               	movlw	155
+  1160     030B                     u207:
+  1161     030B  3200               	nop2
+  1162     030C  0B89               	decfsz	9,f
+  1163     030D  2B0B               	goto	u207
+  1164     030E                     l1302:
+  1165     030E  0022               	movlb	2	; select bank2
+  1166     030F  160C               	bsf	12,4	;volatile
+  1167     0310                     l1304:
+  1168     0310  168C               	bsf	12,5	;volatile
+  1169     0311                     l134:
+  1170                           
+  1171                           ;main.c: 119:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1172     0311  309B               	movlw	155
+  1173     0312                     u217:
+  1174     0312  3200               	nop2
+  1175     0313  0B89               	decfsz	9,f
+  1176     0314  2B12               	goto	u217
+  1177     0315                     l1306:
+  1178     0315  0022               	movlb	2	; select bank2
+  1179     0316  120C               	bcf	12,4	;volatile
+  1180     0317                     l1308:
+  1181     0317  168C               	bsf	12,5	;volatile
+  1182     0318                     l138:
+  1183                           
+  1184                           ;main.c: 122:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1185     0318  309B               	movlw	155
+  1186     0319                     u227:
+  1187     0319  3200               	nop2
+  1188     031A  0B89               	decfsz	9,f
+  1189     031B  2B19               	goto	u227
+  1190     031C                     l1310:
+  1191     031C  0022               	movlb	2	; select bank2
+  1192     031D  160C               	bsf	12,4	;volatile
+  1193     031E                     l1312:
+  1194     031E  168C               	bsf	12,5	;volatile
+  1195     031F  2BD9               	goto	l1408
+  1196     0320                     l144:	
+  1197                           ;main.c: 127:                 do { LATAbits.LATA4 = 0; } while(0);
+  1198                           
+  1199     0320  0022               	movlb	2	; select bank2
+  1200     0321  120C               	bcf	12,4	;volatile
+  1201     0322                     l146:	
+  1202                           ;main.c: 128:                 do { LATAbits.LATA5 = 1; } while(0);
+  1203                           
+  1204     0322  168C               	bsf	12,5	;volatile
+  1205     0323                     l1314:
+  1206                           
+  1207                           ;main.c: 129:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1208     0323  309B               	movlw	155
+  1209     0324                     u237:
+  1210     0324  3200               	nop2
+  1211     0325  0B89               	decfsz	9,f
+  1212     0326  2B24               	goto	u237
+  1213     0327                     l1316:
+  1214     0327  0022               	movlb	2	; select bank2
+  1215     0328  160C               	bsf	12,4	;volatile
+  1216     0329                     l1318:
+  1217     0329  168C               	bsf	12,5	;volatile
+  1218     032A                     l151:
+  1219                           
+  1220                           ;main.c: 132:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1221     032A  309B               	movlw	155
+  1222     032B                     u247:
+  1223     032B  3200               	nop2
+  1224     032C  0B89               	decfsz	9,f
+  1225     032D  2B2B               	goto	u247
+  1226     032E                     l1320:
+  1227     032E  0022               	movlb	2	; select bank2
+  1228     032F  120C               	bcf	12,4	;volatile
+  1229     0330                     l1322:
+  1230     0330  168C               	bsf	12,5	;volatile
+  1231     0331                     l155:
+  1232                           
+  1233                           ;main.c: 135:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1234     0331  309B               	movlw	155
+  1235     0332                     u257:
+  1236     0332  3200               	nop2
+  1237     0333  0B89               	decfsz	9,f
+  1238     0334  2B32               	goto	u257
+  1239     0335                     l1324:
+  1240     0335  0022               	movlb	2	; select bank2
+  1241     0336  160C               	bsf	12,4	;volatile
+  1242     0337                     l1326:
+  1243     0337  168C               	bsf	12,5	;volatile
+  1244     0338                     l159:
+  1245                           
+  1246                           ;main.c: 138:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1247     0338  309B               	movlw	155
+  1248     0339                     u267:
+  1249     0339  3200               	nop2
+  1250     033A  0B89               	decfsz	9,f
+  1251     033B  2B39               	goto	u267
+  1252     033C                     l1328:
+  1253     033C  0022               	movlb	2	; select bank2
+  1254     033D  120C               	bcf	12,4	;volatile
+  1255     033E                     l1330:
+  1256     033E  168C               	bsf	12,5	;volatile
+  1257     033F                     l163:
+  1258                           
+  1259                           ;main.c: 141:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1260     033F  309B               	movlw	155
+  1261     0340                     u277:
+  1262     0340  3200               	nop2
+  1263     0341  0B89               	decfsz	9,f
+  1264     0342  2B40               	goto	u277
+  1265     0343                     l1332:
+  1266     0343  0022               	movlb	2	; select bank2
+  1267     0344  160C               	bsf	12,4	;volatile
+  1268     0345                     l1334:
+  1269     0345  168C               	bsf	12,5	;volatile
+  1270     0346  2BD9               	goto	l1408
+  1271     0347                     l169:	
+  1272                           ;main.c: 146:                 do { LATAbits.LATA4 = 0; } while(0);
+  1273                           
+  1274     0347  0022               	movlb	2	; select bank2
+  1275     0348  120C               	bcf	12,4	;volatile
+  1276     0349                     l171:	
+  1277                           ;main.c: 147:                 do { LATAbits.LATA5 = 1; } while(0);
+  1278                           
+  1279     0349  168C               	bsf	12,5	;volatile
+  1280     034A                     l1336:
+  1281                           
+  1282                           ;main.c: 148:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1283     034A  309B               	movlw	155
+  1284     034B                     u287:
+  1285     034B  3200               	nop2
+  1286     034C  0B89               	decfsz	9,f
+  1287     034D  2B4B               	goto	u287
+  1288     034E                     l1338:
+  1289     034E  0022               	movlb	2	; select bank2
+  1290     034F  160C               	bsf	12,4	;volatile
+  1291     0350                     l1340:
+  1292     0350  168C               	bsf	12,5	;volatile
+  1293     0351                     l176:
+  1294                           
+  1295                           ;main.c: 151:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1296     0351  309B               	movlw	155
+  1297     0352                     u297:
+  1298     0352  3200               	nop2
+  1299     0353  0B89               	decfsz	9,f
+  1300     0354  2B52               	goto	u297
+  1301     0355                     l1342:
+  1302     0355  0022               	movlb	2	; select bank2
+  1303     0356  120C               	bcf	12,4	;volatile
+  1304     0357                     l1344:
+  1305     0357  168C               	bsf	12,5	;volatile
+  1306     0358                     l180:
+  1307                           
+  1308                           ;main.c: 154:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1309     0358  309B               	movlw	155
+  1310     0359                     u307:
+  1311     0359  3200               	nop2
+  1312     035A  0B89               	decfsz	9,f
+  1313     035B  2B59               	goto	u307
+  1314     035C                     l1346:
+  1315     035C  0022               	movlb	2	; select bank2
+  1316     035D  160C               	bsf	12,4	;volatile
+  1317     035E                     l1348:
+  1318     035E  168C               	bsf	12,5	;volatile
+  1319     035F                     l184:
+  1320                           
+  1321                           ;main.c: 157:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1322     035F  309B               	movlw	155
+  1323     0360                     u317:
+  1324     0360  3200               	nop2
+  1325     0361  0B89               	decfsz	9,f
+  1326     0362  2B60               	goto	u317
+  1327     0363                     l1350:
+  1328     0363  0022               	movlb	2	; select bank2
+  1329     0364  120C               	bcf	12,4	;volatile
+  1330     0365                     l1352:
+  1331     0365  168C               	bsf	12,5	;volatile
+  1332     0366                     l188:
+  1333                           
+  1334                           ;main.c: 160:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1335     0366  309B               	movlw	155
+  1336     0367                     u327:
+  1337     0367  3200               	nop2
+  1338     0368  0B89               	decfsz	9,f
+  1339     0369  2B67               	goto	u327
+  1340     036A                     l1354:
+  1341     036A  0022               	movlb	2	; select bank2
+  1342     036B  160C               	bsf	12,4	;volatile
+  1343     036C                     l1356:
+  1344     036C  168C               	bsf	12,5	;volatile
+  1345     036D                     l192:
+  1346                           
+  1347                           ;main.c: 163:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1348     036D  309B               	movlw	155
+  1349     036E                     u337:
+  1350     036E  3200               	nop2
+  1351     036F  0B89               	decfsz	9,f
+  1352     0370  2B6E               	goto	u337
+  1353     0371                     l1358:
+  1354     0371  0022               	movlb	2	; select bank2
+  1355     0372  120C               	bcf	12,4	;volatile
+  1356     0373                     l1360:
+  1357     0373  168C               	bsf	12,5	;volatile
+  1358     0374                     l196:
+  1359                           
+  1360                           ;main.c: 166:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1361     0374  309B               	movlw	155
+  1362     0375                     u347:
+  1363     0375  3200               	nop2
+  1364     0376  0B89               	decfsz	9,f
+  1365     0377  2B75               	goto	u347
+  1366     0378                     l1362:
+  1367     0378  0022               	movlb	2	; select bank2
+  1368     0379  160C               	bsf	12,4	;volatile
+  1369     037A                     l1364:
+  1370     037A  168C               	bsf	12,5	;volatile
+  1371     037B  2BD9               	goto	l1408
+  1372     037C                     l202:	
+  1373                           ;main.c: 171:                 do { LATAbits.LATA4 = 0; } while(0);
+  1374                           
+  1375     037C  0022               	movlb	2	; select bank2
+  1376     037D  120C               	bcf	12,4	;volatile
+  1377     037E                     l204:	
+  1378                           ;main.c: 172:                 do { LATAbits.LATA5 = 1; } while(0);
+  1379                           
+  1380     037E  168C               	bsf	12,5	;volatile
+  1381     037F                     l1366:
+  1382                           
+  1383                           ;main.c: 173:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1384     037F  309B               	movlw	155
+  1385     0380                     u357:
+  1386     0380  3200               	nop2
+  1387     0381  0B89               	decfsz	9,f
+  1388     0382  2B80               	goto	u357
+  1389     0383                     l1368:
+  1390     0383  0022               	movlb	2	; select bank2
+  1391     0384  160C               	bsf	12,4	;volatile
+  1392     0385                     l1370:
+  1393     0385  168C               	bsf	12,5	;volatile
+  1394     0386                     l209:
+  1395                           
+  1396                           ;main.c: 176:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1397     0386  309B               	movlw	155
+  1398     0387                     u367:
+  1399     0387  3200               	nop2
+  1400     0388  0B89               	decfsz	9,f
+  1401     0389  2B87               	goto	u367
+  1402     038A                     l1372:
+  1403     038A  0022               	movlb	2	; select bank2
+  1404     038B  120C               	bcf	12,4	;volatile
+  1405     038C                     l1374:
+  1406     038C  168C               	bsf	12,5	;volatile
+  1407     038D                     l213:
+  1408                           
+  1409                           ;main.c: 179:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1410     038D  309B               	movlw	155
+  1411     038E                     u377:
+  1412     038E  3200               	nop2
+  1413     038F  0B89               	decfsz	9,f
+  1414     0390  2B8E               	goto	u377
+  1415     0391                     l1376:
+  1416     0391  0022               	movlb	2	; select bank2
+  1417     0392  160C               	bsf	12,4	;volatile
+  1418     0393                     l1378:
+  1419     0393  168C               	bsf	12,5	;volatile
+  1420     0394                     l217:
+  1421                           
+  1422                           ;main.c: 182:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1423     0394  309B               	movlw	155
+  1424     0395                     u387:
+  1425     0395  3200               	nop2
+  1426     0396  0B89               	decfsz	9,f
+  1427     0397  2B95               	goto	u387
+  1428     0398                     l1380:
+  1429     0398  0022               	movlb	2	; select bank2
+  1430     0399  120C               	bcf	12,4	;volatile
+  1431     039A                     l1382:
+  1432     039A  168C               	bsf	12,5	;volatile
+  1433     039B                     l221:
+  1434                           
+  1435                           ;main.c: 185:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1436     039B  309B               	movlw	155
+  1437     039C                     u397:
+  1438     039C  3200               	nop2
+  1439     039D  0B89               	decfsz	9,f
+  1440     039E  2B9C               	goto	u397
+  1441     039F                     l1384:
+  1442     039F  0022               	movlb	2	; select bank2
+  1443     03A0  160C               	bsf	12,4	;volatile
+  1444     03A1                     l1386:
+  1445     03A1  168C               	bsf	12,5	;volatile
+  1446     03A2                     l225:
+  1447                           
+  1448                           ;main.c: 188:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1449     03A2  309B               	movlw	155
+  1450     03A3                     u407:
+  1451     03A3  3200               	nop2
+  1452     03A4  0B89               	decfsz	9,f
+  1453     03A5  2BA3               	goto	u407
+  1454     03A6                     l1388:
+  1455     03A6  0022               	movlb	2	; select bank2
+  1456     03A7  120C               	bcf	12,4	;volatile
+  1457     03A8                     l1390:
+  1458     03A8  168C               	bsf	12,5	;volatile
+  1459     03A9                     l229:
+  1460                           
+  1461                           ;main.c: 191:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1462     03A9  309B               	movlw	155
+  1463     03AA                     u417:
+  1464     03AA  3200               	nop2
+  1465     03AB  0B89               	decfsz	9,f
+  1466     03AC  2BAA               	goto	u417
+  1467     03AD                     l1392:
+  1468     03AD  0022               	movlb	2	; select bank2
+  1469     03AE  160C               	bsf	12,4	;volatile
+  1470     03AF                     l1394:
+  1471     03AF  168C               	bsf	12,5	;volatile
+  1472     03B0                     l233:
+  1473                           
+  1474                           ;main.c: 194:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1475     03B0  309B               	movlw	155
+  1476     03B1                     u427:
+  1477     03B1  3200               	nop2
+  1478     03B2  0B89               	decfsz	9,f
+  1479     03B3  2BB1               	goto	u427
+  1480     03B4                     l1396:
+  1481     03B4  0022               	movlb	2	; select bank2
+  1482     03B5  120C               	bcf	12,4	;volatile
+  1483     03B6                     l1398:
+  1484     03B6  168C               	bsf	12,5	;volatile
+  1485     03B7                     l237:
+  1486                           
+  1487                           ;main.c: 197:                 _delay((unsigned long)((100)*(31000/4000.0)));
+  1488     03B7  309B               	movlw	155
+  1489     03B8                     u437:
+  1490     03B8  3200               	nop2
+  1491     03B9  0B89               	decfsz	9,f
+  1492     03BA  2BB8               	goto	u437
+  1493     03BB                     l1400:
+  1494     03BB  0022               	movlb	2	; select bank2
+  1495     03BC  160C               	bsf	12,4	;volatile
+  1496     03BD                     l1402:
+  1497     03BD  168C               	bsf	12,5	;volatile
+  1498     03BE  2BD9               	goto	l1408
+  1499     03BF                     l1406:
+  1500                           
+  1501                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  1502                           ; Switch size 1, requested type "simple"
+  1503                           ; Number of cases is 1, Range of values is 0 to 0
+  1504                           ; switch strategies available:
+  1505                           ; Name         Instructions Cycles
+  1506                           ; simple_byte            4     3 (average)
+  1507                           ; direct_byte            8     6 (fixed)
+  1508                           ; jumptable            260     6 (fixed)
+  1509                           ;	Chosen strategy is simple_byte
+  1510     03BF  0020               	movlb	0	; select bank0
+  1511     03C0  084E               	movf	main@readWord+1,w
+  1512     03C1  3A00               	xorlw	0	; case 0
+  1513     03C2  1903               	skipnz
+  1514     03C3  2BC5               	goto	l1440
+  1515     03C4  2BD9               	goto	l1408
+  1516     03C5                     l1440:
+  1517                           
+  1518                           ; Switch size 1, requested type "simple"
+  1519                           ; Number of cases is 6, Range of values is 0 to 5
+  1520                           ; switch strategies available:
+  1521                           ; Name         Instructions Cycles
+  1522                           ; direct_byte           18     6 (fixed)
+  1523                           ; simple_byte           19    10 (average)
+  1524                           ; jumptable            260     6 (fixed)
+  1525                           ;	Chosen strategy is simple_byte
+  1526     03C5  084D               	movf	main@readWord,w
+  1527     03C6  3A00               	xorlw	0	; case 0
+  1528     03C7  1903               	skipnz
+  1529     03C8  2ADF               	goto	l1278
+  1530     03C9  3A01               	xorlw	1	; case 1
+  1531     03CA  1903               	skipnz
+  1532     03CB  2AFC               	goto	l118
+  1533     03CC  3A03               	xorlw	3	; case 2
+  1534     03CD  1903               	skipnz
+  1535     03CE  2B07               	goto	l127
+  1536     03CF  3A01               	xorlw	1	; case 3
+  1537     03D0  1903               	skipnz
+  1538     03D1  2B20               	goto	l144
+  1539     03D2  3A07               	xorlw	7	; case 4
+  1540     03D3  1903               	skipnz
+  1541     03D4  2B47               	goto	l169
+  1542     03D5  3A01               	xorlw	1	; case 5
+  1543     03D6  1903               	skipnz
+  1544     03D7  2B7C               	goto	l202
+  1545     03D8  2BD9               	goto	l1408
+  1546     03D9                     l1408:
+  1547                           
+  1548                           ;main.c: 207:     _delay((unsigned long)((5950)*(31000/4000.0)));
+  1549     03D9  303C               	movlw	60
+  1550     03DA  0020               	movlb	0	; select bank0
+  1551     03DB  00A9               	movwf	??_main
+  1552     03DC  30E1               	movlw	225
+  1553     03DD                     u447:
+  1554     03DD  0B89               	decfsz	9,f
+  1555     03DE  2BDD               	goto	u447
+  1556     03DF  0BA9               	decfsz	??_main,f
+  1557     03E0  2BDD               	goto	u447
+  1558     03E1  3200               	nop2
+  1559     03E2                     l1410:
+  1560                           
+  1561                           ;main.c: 208:     if(readWord >= 0x0001)
+  1562     03E2  0020               	movlb	0	; select bank0
+  1563     03E3  084D               	movf	main@readWord,w
+  1564     03E4  044E               	iorwf	main@readWord+1,w
+  1565     03E5  1903               	btfsc	3,2
+  1566     03E6  2BE8               	goto	u161
+  1567     03E7  2BE9               	goto	u160
+  1568     03E8                     u161:
+  1569     03E8  2BBF               	goto	l1406
+  1570     03E9                     u160:
+  1571     03E9                     l1412:
+  1572                           
+  1573                           ;main.c: 209:         {;main.c: 210:             readWord = readWord - 1;
+  1574     03E9  084D               	movf	main@readWord,w
+  1575     03EA  3EFF               	addlw	255
+  1576     03EB  00CD               	movwf	main@readWord
+  1577     03EC  30FF               	movlw	255
+  1578     03ED  3D4E               	addwfc	main@readWord+1,w
+  1579     03EE  00CE               	movwf	main@readWord+1
+  1580     03EF                     l1414:
+  1581                           
+  1582                           ;main.c: 211:             FLASH_WriteWord(flashAddr, Buf, readWord);
+  1583     03EF  084C               	movf	main@flashAddr+1,w
+  1584     03F0  00A1               	movwf	FLASH_WriteWord@flashAddr+1
+  1585     03F1  084B               	movf	main@flashAddr,w
+  1586     03F2  00A0               	movwf	FLASH_WriteWord@flashAddr
+  1587     03F3  302A               	movlw	(low (main@Buf| 0))& (0+255)
+  1588     03F4  00A2               	movwf	FLASH_WriteWord@ramBuf
+  1589     03F5  084E               	movf	main@readWord+1,w
+  1590     03F6  00A4               	movwf	FLASH_WriteWord@word+1
+  1591     03F7  084D               	movf	main@readWord,w
+  1592     03F8  00A3               	movwf	FLASH_WriteWord@word
+  1593     03F9  3181  21BB  3182   	fcall	_FLASH_WriteWord
+  1594     03FC  2BBF               	goto	l1406
+  1595     03FD  2802               	ljmp	start
+  1596     03FE                     __end_of_main:
+  1597                           
+  1598                           	psect	text1
+  1599     0166                     __ptext1:	
+  1600 ;; *************** function _SYSTEM_Initialize *****************
+  1601 ;; Defined at:
+  1602 ;;		line 50 in file "mcc_generated_files/mcc.c"
+  1603 ;; Parameters:    Size  Location     Type
+  1604 ;;		None
+  1605 ;; Auto vars:     Size  Location     Type
+  1606 ;;		None
+  1607 ;; Return value:  Size  Location     Type
+  1608 ;;                  1    wreg      void 
+  1609 ;; Registers used:
+  1610 ;;		wreg, status,2, status,0, pclath, cstack
+  1611 ;; Tracked objects:
+  1612 ;;		On entry : 0/0
+  1613 ;;		On exit  : 0/0
+  1614 ;;		Unchanged: 0/0
+  1615 ;; Data sizes:     COMMON   BANK0   BANK1
+  1616 ;;      Params:         0       0       0
+  1617 ;;      Locals:         0       0       0
+  1618 ;;      Temps:          0       0       0
+  1619 ;;      Totals:         0       0       0
+  1620 ;;Total ram usage:        0 bytes
+  1621 ;; Hardware stack levels used: 1
+  1622 ;; Hardware stack levels required when called: 1
+  1623 ;; This function calls:
+  1624 ;;		_OSCILLATOR_Initialize
+  1625 ;;		_PIN_MANAGER_Initialize
+  1626 ;;		_WDT_Initialize
+  1627 ;; This function is called by:
+  1628 ;;		_main
+  1629 ;; This function uses a non-reentrant model
+  1630 ;;
+  1631                           
+  1632     0166                     _SYSTEM_Initialize:	
+  1633                           ;psect for function _SYSTEM_Initialize
+  1634                           
+  1635     0166                     l1220:	
+  1636                           ;incstack = 0
+  1637                           ; Regs used in _SYSTEM_Initialize: [wreg+status,2+status,0+pclath+cstack]
+  1638                           
+  1639                           
+  1640                           ;mcc_generated_files/mcc.c: 53:     PIN_MANAGER_Initialize();
+  1641     0166  3181  2170  3181   	fcall	_PIN_MANAGER_Initialize
+  1642     0169                     l1222:
+  1643                           
+  1644                           ;mcc_generated_files/mcc.c: 54:     OSCILLATOR_Initialize();
+  1645     0169  3181  2160  3181   	fcall	_OSCILLATOR_Initialize
+  1646     016C                     l1224:
+  1647                           
+  1648                           ;mcc_generated_files/mcc.c: 55:     WDT_Initialize();
+  1649     016C  3181  215C  3181   	fcall	_WDT_Initialize
+  1650     016F                     l17:
+  1651     016F  0008               	return
+  1652     0170                     __end_of_SYSTEM_Initialize:
+  1653                           
+  1654                           	psect	text2
+  1655     015C                     __ptext2:	
+  1656 ;; *************** function _WDT_Initialize *****************
+  1657 ;; Defined at:
+  1658 ;;		line 68 in file "mcc_generated_files/mcc.c"
+  1659 ;; Parameters:    Size  Location     Type
+  1660 ;;		None
+  1661 ;; Auto vars:     Size  Location     Type
+  1662 ;;		None
+  1663 ;; Return value:  Size  Location     Type
+  1664 ;;                  1    wreg      void 
+  1665 ;; Registers used:
+  1666 ;;		wreg
+  1667 ;; Tracked objects:
+  1668 ;;		On entry : 0/0
+  1669 ;;		On exit  : 0/0
+  1670 ;;		Unchanged: 0/0
+  1671 ;; Data sizes:     COMMON   BANK0   BANK1
+  1672 ;;      Params:         0       0       0
+  1673 ;;      Locals:         0       0       0
+  1674 ;;      Temps:          0       0       0
+  1675 ;;      Totals:         0       0       0
+  1676 ;;Total ram usage:        0 bytes
+  1677 ;; Hardware stack levels used: 1
+  1678 ;; This function calls:
+  1679 ;;		Nothing
+  1680 ;; This function is called by:
+  1681 ;;		_SYSTEM_Initialize
+  1682 ;; This function uses a non-reentrant model
+  1683 ;;
+  1684                           
+  1685     015C                     _WDT_Initialize:	
+  1686                           ;psect for function _WDT_Initialize
+  1687                           
+  1688     015C                     l1146:	
+  1689                           ;incstack = 0
+  1690                           ; Regs used in _WDT_Initialize: [wreg]
+  1691                           
+  1692                           
+  1693                           ;mcc_generated_files/mcc.c: 71:     WDTCON = 0x16;
+  1694     015C  3016               	movlw	22
+  1695     015D  0021               	movlb	1	; select bank1
+  1696     015E  0097               	movwf	23	;volatile
+  1697     015F                     l23:
+  1698     015F  0008               	return
+  1699     0160                     __end_of_WDT_Initialize:
+  1700                           
+  1701                           	psect	text3
+  1702     0170                     __ptext3:	
+  1703 ;; *************** function _PIN_MANAGER_Initialize *****************
+  1704 ;; Defined at:
+  1705 ;;		line 55 in file "mcc_generated_files/pin_manager.c"
+  1706 ;; Parameters:    Size  Location     Type
+  1707 ;;		None
+  1708 ;; Auto vars:     Size  Location     Type
+  1709 ;;		None
+  1710 ;; Return value:  Size  Location     Type
+  1711 ;;                  1    wreg      void 
+  1712 ;; Registers used:
+  1713 ;;		wreg, status,2
+  1714 ;; Tracked objects:
+  1715 ;;		On entry : 0/0
+  1716 ;;		On exit  : 0/0
+  1717 ;;		Unchanged: 0/0
+  1718 ;; Data sizes:     COMMON   BANK0   BANK1
+  1719 ;;      Params:         0       0       0
+  1720 ;;      Locals:         0       0       0
+  1721 ;;      Temps:          0       0       0
+  1722 ;;      Totals:         0       0       0
+  1723 ;;Total ram usage:        0 bytes
+  1724 ;; Hardware stack levels used: 1
+  1725 ;; This function calls:
+  1726 ;;		Nothing
+  1727 ;; This function is called by:
+  1728 ;;		_SYSTEM_Initialize
+  1729 ;; This function uses a non-reentrant model
+  1730 ;;
+  1731                           
+  1732     0170                     _PIN_MANAGER_Initialize:	
+  1733                           ;psect for function _PIN_MANAGER_Initialize
+  1734                           
+  1735     0170                     l1130:	
+  1736                           ;incstack = 0
+  1737                           ; Regs used in _PIN_MANAGER_Initialize: [wreg+status,2]
+  1738                           
+  1739                           
+  1740                           ;mcc_generated_files/pin_manager.c: 60:     LATA = 0x00;
+  1741     0170  0022               	movlb	2	; select bank2
+  1742     0171  018C               	clrf	12	;volatile
+  1743     0172                     l1132:
+  1744                           
+  1745                           ;mcc_generated_files/pin_manager.c: 65:     TRISA = 0x0F;
+  1746     0172  300F               	movlw	15
+  1747     0173  0021               	movlb	1	; select bank1
+  1748     0174  008C               	movwf	12	;volatile
+  1749     0175                     l1134:
+  1750                           
+  1751                           ;mcc_generated_files/pin_manager.c: 70:     ANSELA = 0x00;
+  1752     0175  0023               	movlb	3	; select bank3
+  1753     0176  018C               	clrf	12	;volatile
+  1754     0177                     l1136:
+  1755                           
+  1756                           ;mcc_generated_files/pin_manager.c: 75:     WPUA = 0x00;
+  1757     0177  0024               	movlb	4	; select bank4
+  1758     0178  018C               	clrf	12	;volatile
+  1759     0179                     l1138:
+  1760                           
+  1761                           ;mcc_generated_files/pin_manager.c: 76:     OPTION_REGbits.nWPUEN = 1;
+  1762     0179  0021               	movlb	1	; select bank1
+  1763     017A  1795               	bsf	21,7	;volatile
+  1764     017B                     l1140:
+  1765                           
+  1766                           ;mcc_generated_files/pin_manager.c: 81:     ODCONA = 0x00;
+  1767     017B  0025               	movlb	5	; select bank5
+  1768     017C  018C               	clrf	12	;volatile
+  1769                           
+  1770                           ;mcc_generated_files/pin_manager.c: 86:     SLRCONA = 0x37;
+  1771     017D  3037               	movlw	55
+  1772     017E  0026               	movlb	6	; select bank6
+  1773     017F  008C               	movwf	12	;volatile
+  1774                           
+  1775                           ;mcc_generated_files/pin_manager.c: 91:     INLVLA = 0x3F;
+  1776     0180  303F               	movlw	63
+  1777     0181  0027               	movlb	7	; select bank7
+  1778     0182  008C               	movwf	12	;volatile
+  1779     0183                     l1142:
+  1780                           
+  1781                           ;mcc_generated_files/pin_manager.c: 96:     APFCON = 0x00;
+  1782     0183  0022               	movlb	2	; select bank2
+  1783     0184  019D               	clrf	29	;volatile
+  1784     0185                     l44:
+  1785     0185  0008               	return
+  1786     0186                     __end_of_PIN_MANAGER_Initialize:
+  1787                           
+  1788                           	psect	text4
+  1789     0160                     __ptext4:	
+  1790 ;; *************** function _OSCILLATOR_Initialize *****************
+  1791 ;; Defined at:
+  1792 ;;		line 58 in file "mcc_generated_files/mcc.c"
+  1793 ;; Parameters:    Size  Location     Type
+  1794 ;;		None
+  1795 ;; Auto vars:     Size  Location     Type
+  1796 ;;		None
+  1797 ;; Return value:  Size  Location     Type
+  1798 ;;                  1    wreg      void 
+  1799 ;; Registers used:
+  1800 ;;		status,2
+  1801 ;; Tracked objects:
+  1802 ;;		On entry : 0/0
+  1803 ;;		On exit  : 0/0
+  1804 ;;		Unchanged: 0/0
+  1805 ;; Data sizes:     COMMON   BANK0   BANK1
+  1806 ;;      Params:         0       0       0
+  1807 ;;      Locals:         0       0       0
+  1808 ;;      Temps:          0       0       0
+  1809 ;;      Totals:         0       0       0
+  1810 ;;Total ram usage:        0 bytes
+  1811 ;; Hardware stack levels used: 1
+  1812 ;; This function calls:
+  1813 ;;		Nothing
+  1814 ;; This function is called by:
+  1815 ;;		_SYSTEM_Initialize
+  1816 ;; This function uses a non-reentrant model
+  1817 ;;
+  1818                           
+  1819     0160                     _OSCILLATOR_Initialize:	
+  1820                           ;psect for function _OSCILLATOR_Initialize
+  1821                           
+  1822     0160                     l1144:	
+  1823                           ;incstack = 0
+  1824                           ; Regs used in _OSCILLATOR_Initialize: [status,2]
+  1825                           
+  1826                           
+  1827                           ;mcc_generated_files/mcc.c: 61:     OSCCON = 0x00;
+  1828     0160  0021               	movlb	1	; select bank1
+  1829     0161  0199               	clrf	25	;volatile
+  1830                           
+  1831                           ;mcc_generated_files/mcc.c: 63:     OSCTUNE = 0x00;
+  1832     0162  0198               	clrf	24	;volatile
+  1833                           
+  1834                           ;mcc_generated_files/mcc.c: 65:     BORCON = 0x00;
+  1835     0163  0022               	movlb	2	; select bank2
+  1836     0164  0196               	clrf	22	;volatile
+  1837     0165                     l20:
+  1838     0165  0008               	return
+  1839     0166                     __end_of_OSCILLATOR_Initialize:
+  1840                           
+  1841                           	psect	text5
+  1842     01BB                     __ptext5:	
+  1843 ;; *************** function _FLASH_WriteWord *****************
+  1844 ;; Defined at:
+  1845 ;;		line 75 in file "mcc_generated_files/memory.c"
+  1846 ;; Parameters:    Size  Location     Type
+  1847 ;;  flashAddr       2    0[BANK0 ] unsigned short 
+  1848 ;;  ramBuf          1    2[BANK0 ] PTR unsigned short 
+  1849 ;;		 -> main@Buf(32), 
+  1850 ;;  word            2    3[BANK0 ] unsigned short 
+  1851 ;; Auto vars:     Size  Location     Type
+  1852 ;;  blockStartAd    2    6[BANK0 ] unsigned short 
+  1853 ;;  i               1    8[BANK0 ] unsigned char 
+  1854 ;;  offset          1    5[BANK0 ] unsigned char 
+  1855 ;; Return value:  Size  Location     Type
+  1856 ;;                  1    wreg      void 
+  1857 ;; Registers used:
+  1858 ;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+  1859 ;; Tracked objects:
+  1860 ;;		On entry : 0/0
+  1861 ;;		On exit  : 0/0
+  1862 ;;		Unchanged: 0/0
+  1863 ;; Data sizes:     COMMON   BANK0   BANK1
+  1864 ;;      Params:         0       5       0
+  1865 ;;      Locals:         0       4       0
+  1866 ;;      Temps:          1       0       0
+  1867 ;;      Totals:         1       9       0
+  1868 ;;Total ram usage:       10 bytes
+  1869 ;; Hardware stack levels used: 1
+  1870 ;; Hardware stack levels required when called: 2
+  1871 ;; This function calls:
+  1872 ;;		_FLASH_ReadWord
+  1873 ;;		_FLASH_WriteBlock
+  1874 ;; This function is called by:
+  1875 ;;		_main
+  1876 ;; This function uses a non-reentrant model
+  1877 ;;
+  1878                           
+  1879     01BB                     _FLASH_WriteWord:	
+  1880                           ;psect for function _FLASH_WriteWord
+  1881                           
+  1882     01BB                     l1226:	
+  1883                           ;incstack = 0
+  1884                           ; Regs used in _FLASH_WriteWord: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
+  1885                           
+  1886                           
+  1887                           ;mcc_generated_files/memory.c: 75: void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ra
+      +                          mBuf, uint16_t word);mcc_generated_files/memory.c: 76: {;mcc_generated_files/memory.c: 7
+      +                          7:     uint16_t blockStartAddr = (uint16_t)(flashAddr & ((0x400 -1) ^ (16 -1)));
+  1888     01BB  30F0               	movlw	240
+  1889     01BC  0020               	movlb	0	; select bank0
+  1890     01BD  0520               	andwf	FLASH_WriteWord@flashAddr,w
+  1891     01BE  00A6               	movwf	FLASH_WriteWord@blockStartAddr
+  1892     01BF  3003               	movlw	3
+  1893     01C0  0521               	andwf	FLASH_WriteWord@flashAddr+1,w
+  1894     01C1  00A7               	movwf	FLASH_WriteWord@blockStartAddr+1
+  1895     01C2                     l1228:
+  1896                           
+  1897                           ;mcc_generated_files/memory.c: 78:     uint8_t offset = (uint8_t)(flashAddr & (16 -1));
+  1898     01C2  0820               	movf	FLASH_WriteWord@flashAddr,w
+  1899     01C3  390F               	andlw	15
+  1900     01C4  00A5               	movwf	FLASH_WriteWord@offset
+  1901                           
+  1902                           ;mcc_generated_files/memory.c: 79:     uint8_t i;;mcc_generated_files/memory.c: 82:     
+      +                          for (i=0; i<16; i++)
+  1903     01C5  01A8               	clrf	FLASH_WriteWord@i
+  1904     01C6                     l1234:
+  1905                           
+  1906                           ;mcc_generated_files/memory.c: 83:     {;mcc_generated_files/memory.c: 84:         ramBu
+      +                          f[i] = FLASH_ReadWord((blockStartAddr+i));
+  1907     01C6  0828               	movf	FLASH_WriteWord@i,w
+  1908     01C7  0726               	addwf	FLASH_WriteWord@blockStartAddr,w
+  1909     01C8  00F0               	movwf	FLASH_ReadWord@flashAddr
+  1910     01C9  0827               	movf	FLASH_WriteWord@blockStartAddr+1,w
+  1911     01CA  1803               	skipnc
+  1912     01CB  0A27               	incf	FLASH_WriteWord@blockStartAddr+1,w
+  1913     01CC  00F1               	movwf	FLASH_ReadWord@flashAddr+1
+  1914     01CD  3181  2186  3181   	fcall	_FLASH_ReadWord
+  1915     01D0  0020               	movlb	0	; select bank0
+  1916     01D1  3528               	lslf	FLASH_WriteWord@i,w
+  1917     01D2  0722               	addwf	FLASH_WriteWord@ramBuf,w
+  1918     01D3  00FD               	movwf	??_FLASH_WriteWord
+  1919     01D4  087D               	movf	??_FLASH_WriteWord,w
+  1920     01D5  0086               	movwf	6
+  1921     01D6  0187               	clrf	7
+  1922     01D7  0870               	movf	?_FLASH_ReadWord,w
+  1923     01D8  3FC0               	movwi [0]fsr1
+  1924     01D9  0871               	movf	?_FLASH_ReadWord+1,w
+  1925     01DA  3FC1               	movwi [1]fsr1
+  1926     01DB                     l1236:
+  1927                           
+  1928                           ;mcc_generated_files/memory.c: 85:     }
+  1929     01DB  3001               	movlw	1
+  1930     01DC  00FD               	movwf	??_FLASH_WriteWord
+  1931     01DD  087D               	movf	??_FLASH_WriteWord,w
+  1932     01DE  07A8               	addwf	FLASH_WriteWord@i,f
+  1933     01DF                     l1238:
+  1934     01DF  3010               	movlw	16
+  1935     01E0  0228               	subwf	FLASH_WriteWord@i,w
+  1936     01E1  1C03               	skipc
+  1937     01E2  29E4               	goto	u121
+  1938     01E3  29E5               	goto	u120
+  1939     01E4                     u121:
+  1940     01E4  29C6               	goto	l1234
+  1941     01E5                     u120:
+  1942     01E5                     l1240:
+  1943                           
+  1944                           ;mcc_generated_files/memory.c: 88:     ramBuf[offset] = word;
+  1945     01E5  3525               	lslf	FLASH_WriteWord@offset,w
+  1946     01E6  0722               	addwf	FLASH_WriteWord@ramBuf,w
+  1947     01E7  00FD               	movwf	??_FLASH_WriteWord
+  1948     01E8  087D               	movf	??_FLASH_WriteWord,w
+  1949     01E9  0086               	movwf	6
+  1950     01EA  0187               	clrf	7
+  1951     01EB  0823               	movf	FLASH_WriteWord@word,w
+  1952     01EC  3FC0               	movwi [0]fsr1
+  1953     01ED  0824               	movf	FLASH_WriteWord@word+1,w
+  1954     01EE  3FC1               	movwi [1]fsr1
+  1955     01EF                     l1242:
+  1956                           
+  1957                           ;mcc_generated_files/memory.c: 91:     FLASH_WriteBlock(blockStartAddr, ramBuf);
+  1958     01EF  0827               	movf	FLASH_WriteWord@blockStartAddr+1,w
+  1959     01F0  00F4               	movwf	FLASH_WriteBlock@writeAddr+1
+  1960     01F1  0826               	movf	FLASH_WriteWord@blockStartAddr,w
+  1961     01F2  00F3               	movwf	FLASH_WriteBlock@writeAddr
+  1962     01F3  0822               	movf	FLASH_WriteWord@ramBuf,w
+  1963     01F4  00F5               	movwf	FLASH_WriteBlock@flashWordArray
+  1964     01F5  3181  21F9  3181   	fcall	_FLASH_WriteBlock
+  1965     01F8                     l75:
+  1966     01F8  0008               	return
+  1967     01F9                     __end_of_FLASH_WriteWord:
+  1968                           
+  1969                           	psect	text6
+  1970     01F9                     __ptext6:	
+  1971 ;; *************** function _FLASH_WriteBlock *****************
+  1972 ;; Defined at:
+  1973 ;;		line 94 in file "mcc_generated_files/memory.c"
+  1974 ;; Parameters:    Size  Location     Type
+  1975 ;;  writeAddr       2    3[COMMON] unsigned short 
+  1976 ;;  flashWordArr    1    5[COMMON] PTR unsigned short 
+  1977 ;;		 -> main@Buf(32), 
+  1978 ;; Auto vars:     Size  Location     Type
+  1979 ;;  blockStartAd    2    9[COMMON] unsigned short 
+  1980 ;;  i               1   12[COMMON] unsigned char 
+  1981 ;;  GIEBitValue     1   11[COMMON] unsigned char 
+  1982 ;; Return value:  Size  Location     Type
+  1983 ;;                  1    wreg      char 
+  1984 ;; Registers used:
+  1985 ;;		wreg, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+  1986 ;; Tracked objects:
+  1987 ;;		On entry : 0/0
+  1988 ;;		On exit  : 0/0
+  1989 ;;		Unchanged: 0/0
+  1990 ;; Data sizes:     COMMON   BANK0   BANK1
+  1991 ;;      Params:         3       0       0
+  1992 ;;      Locals:         4       0       0
+  1993 ;;      Temps:          3       0       0
+  1994 ;;      Totals:        10       0       0
+  1995 ;;Total ram usage:       10 bytes
+  1996 ;; Hardware stack levels used: 1
+  1997 ;; Hardware stack levels required when called: 1
+  1998 ;; This function calls:
+  1999 ;;		_FLASH_EraseBlock
+  2000 ;; This function is called by:
+  2001 ;;		_FLASH_WriteWord
+  2002 ;; This function uses a non-reentrant model
+  2003 ;;
+  2004                           
+  2005     01F9                     _FLASH_WriteBlock:	
+  2006                           ;psect for function _FLASH_WriteBlock
+  2007                           
+  2008     01F9                     l1170:	
+  2009                           ;incstack = 0
+  2010                           ; Regs used in _FLASH_WriteBlock: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
+  2011                           
+  2012                           
+  2013                           ;mcc_generated_files/memory.c: 94: int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t 
+      +                          *flashWordArray);mcc_generated_files/memory.c: 95: {;mcc_generated_files/memory.c: 96:  
+      +                             uint16_t blockStartAddr = (uint16_t )(writeAddr & ((0x400 -1) ^ (16 -1)));
+  2014     01F9  30F0               	movlw	240
+  2015     01FA  0573               	andwf	FLASH_WriteBlock@writeAddr,w
+  2016     01FB  00F9               	movwf	FLASH_WriteBlock@blockStartAddr
+  2017     01FC  3003               	movlw	3
+  2018     01FD  0574               	andwf	FLASH_WriteBlock@writeAddr+1,w
+  2019     01FE  00FA               	movwf	FLASH_WriteBlock@blockStartAddr+1
+  2020     01FF                     l1172:
+  2021                           
+  2022                           ;mcc_generated_files/memory.c: 97:     uint8_t GIEBitValue = INTCONbits.GIE;
+  2023     01FF  3000               	movlw	0
+  2024     0200  1B8B               	btfsc	11,7	;volatile
+  2025     0201  3001               	movlw	1
+  2026     0202  00FB               	movwf	FLASH_WriteBlock@GIEBitValue
+  2027     0203                     l1174:
+  2028                           
+  2029                           ;mcc_generated_files/memory.c: 98:     uint8_t i;;mcc_generated_files/memory.c: 101:    
+      +                           if( writeAddr != blockStartAddr )
+  2030     0203  087A               	movf	FLASH_WriteBlock@blockStartAddr+1,w
+  2031     0204  0674               	xorwf	FLASH_WriteBlock@writeAddr+1,w
+  2032     0205  1D03               	skipz
+  2033     0206  2A09               	goto	u95
+  2034     0207  0879               	movf	FLASH_WriteBlock@blockStartAddr,w
+  2035     0208  0673               	xorwf	FLASH_WriteBlock@writeAddr,w
+  2036     0209                     u95:
+  2037     0209  1903               	skipnz
+  2038     020A  2A0C               	goto	u91
+  2039     020B  2A0D               	goto	u90
+  2040     020C                     u91:
+  2041     020C  2A0E               	goto	l78
+  2042     020D                     u90:
+  2043     020D  2A57               	goto	l79
+  2044     020E                     l78:	
+  2045                           ;mcc_generated_files/memory.c: 104:     }
+  2046                           
+  2047                           
+  2048                           ;mcc_generated_files/memory.c: 106:     INTCONbits.GIE = 0;
+  2049     020E  138B               	bcf	11,7	;volatile
+  2050     020F                     l1178:
+  2051                           
+  2052                           ;mcc_generated_files/memory.c: 109:     FLASH_EraseBlock(writeAddr);
+  2053     020F  0874               	movf	FLASH_WriteBlock@writeAddr+1,w
+  2054     0210  00F1               	movwf	FLASH_EraseBlock@startAddr+1
+  2055     0211  0873               	movf	FLASH_WriteBlock@writeAddr,w
+  2056     0212  00F0               	movwf	FLASH_EraseBlock@startAddr
+  2057     0213  3181  219F  3181   	fcall	_FLASH_EraseBlock
+  2058     0216                     l1180:
+  2059                           
+  2060                           ;mcc_generated_files/memory.c: 112:     PMCON1bits.CFGS = 0;
+  2061     0216  0023               	movlb	3	; select bank3
+  2062     0217  1315               	bcf	21,6	;volatile
+  2063     0218                     l1182:
+  2064                           
+  2065                           ;mcc_generated_files/memory.c: 113:     PMCON1bits.WREN = 1;
+  2066     0218  1515               	bsf	21,2	;volatile
+  2067     0219                     l1184:
+  2068                           
+  2069                           ;mcc_generated_files/memory.c: 114:     PMCON1bits.LWLO = 1;
+  2070     0219  1695               	bsf	21,5	;volatile
+  2071     021A                     l1186:
+  2072                           
+  2073                           ;mcc_generated_files/memory.c: 116:     for (i=0; i<16; i++)
+  2074     021A  01FC               	clrf	FLASH_WriteBlock@i
+  2075     021B                     l1192:
+  2076                           
+  2077                           ;mcc_generated_files/memory.c: 117:     {;mcc_generated_files/memory.c: 119:         PMA
+      +                          DRL = (writeAddr & 0xFF);
+  2078     021B  0873               	movf	FLASH_WriteBlock@writeAddr,w
+  2079     021C  0023               	movlb	3	; select bank3
+  2080     021D  0091               	movwf	17	;volatile
+  2081     021E                     l1194:
+  2082                           
+  2083                           ;mcc_generated_files/memory.c: 121:         PMADRH = ((writeAddr & 0xFF00) >> 8);
+  2084     021E  0874               	movf	FLASH_WriteBlock@writeAddr+1,w
+  2085     021F  0092               	movwf	18	;volatile
+  2086     0220                     l1196:
+  2087                           
+  2088                           ;mcc_generated_files/memory.c: 124:         PMDATL = flashWordArray[i];
+  2089     0220  357C               	lslf	FLASH_WriteBlock@i,w
+  2090     0221  0775               	addwf	FLASH_WriteBlock@flashWordArray,w
+  2091     0222  00F6               	movwf	??_FLASH_WriteBlock
+  2092     0223  0876               	movf	??_FLASH_WriteBlock,w
+  2093     0224  0086               	movwf	6
+  2094     0225  0187               	clrf	7
+  2095     0226  0801               	movf	1,w
+  2096     0227  0093               	movwf	19	;volatile
+  2097     0228                     l1198:
+  2098                           
+  2099                           ;mcc_generated_files/memory.c: 125:         PMDATH = ((flashWordArray[i] & 0xFF00) >> 8)
+      +                          ;
+  2100     0228  357C               	lslf	FLASH_WriteBlock@i,w
+  2101     0229  0775               	addwf	FLASH_WriteBlock@flashWordArray,w
+  2102     022A  00F6               	movwf	??_FLASH_WriteBlock
+  2103     022B  0876               	movf	??_FLASH_WriteBlock,w
+  2104     022C  0086               	movwf	6
+  2105     022D  0187               	clrf	7
+  2106     022E  3F40               	moviw [0]fsr1
+  2107     022F  00F7               	movwf	??_FLASH_WriteBlock+1
+  2108     0230  3F41               	moviw [1]fsr1
+  2109     0231  00F8               	movwf	??_FLASH_WriteBlock+2
+  2110     0232  0878               	movf	??_FLASH_WriteBlock+2,w
+  2111     0233  0094               	movwf	20	;volatile
+  2112     0234                     l1200:
+  2113                           
+  2114                           ;mcc_generated_files/memory.c: 127:         if(i == (16 -1))
+  2115     0234  300F               	movlw	15
+  2116     0235  067C               	xorwf	FLASH_WriteBlock@i,w
+  2117     0236  1D03               	btfss	3,2
+  2118     0237  2A39               	goto	u101
+  2119     0238  2A3A               	goto	u100
+  2120     0239                     u101:
+  2121     0239  2A3B               	goto	l1204
+  2122     023A                     u100:
+  2123     023A                     l1202:
+  2124                           
+  2125                           ;mcc_generated_files/memory.c: 128:         {;mcc_generated_files/memory.c: 130:        
+      +                               PMCON1bits.LWLO = 0;
+  2126     023A  1295               	bcf	21,5	;volatile
+  2127     023B                     l1204:
+  2128                           
+  2129                           ;mcc_generated_files/memory.c: 133:         PMCON2 = 0x55;
+  2130     023B  3055               	movlw	85
+  2131     023C  0096               	movwf	22	;volsfr
+  2132                           
+  2133                           ;mcc_generated_files/memory.c: 134:         PMCON2 = 0xAA;
+  2134     023D  30AA               	movlw	170
+  2135     023E  0096               	movwf	22	;volsfr
+  2136     023F                     l1206:
+  2137                           
+  2138                           ;mcc_generated_files/memory.c: 135:         PMCON1bits.WR = 1;
+  2139     023F  1495               	bsf	21,1	;volatile
+  2140     0240                     l1208:
+  2141                           
+  2142                           ;mcc_generated_files/memory.c: 136:         __nop();
+  2143     0240  0000               	nop
+  2144     0241                     l1210:
+  2145                           
+  2146                           ;mcc_generated_files/memory.c: 137:         __nop();
+  2147     0241  0000               	nop
+  2148                           
+  2149                           ;mcc_generated_files/memory.c: 139:  writeAddr++;
+  2150     0242  3001               	movlw	1
+  2151     0243  07F3               	addwf	FLASH_WriteBlock@writeAddr,f
+  2152     0244  3000               	movlw	0
+  2153     0245  3DF4               	addwfc	FLASH_WriteBlock@writeAddr+1,f
+  2154     0246                     l1212:
+  2155                           
+  2156                           ;mcc_generated_files/memory.c: 140:     }
+  2157     0246  3001               	movlw	1
+  2158     0247  00F6               	movwf	??_FLASH_WriteBlock
+  2159     0248  0876               	movf	??_FLASH_WriteBlock,w
+  2160     0249  07FC               	addwf	FLASH_WriteBlock@i,f
+  2161     024A                     l1214:
+  2162     024A  3010               	movlw	16
+  2163     024B  027C               	subwf	FLASH_WriteBlock@i,w
+  2164     024C  1C03               	skipc
+  2165     024D  2A4F               	goto	u111
+  2166     024E  2A50               	goto	u110
+  2167     024F                     u111:
+  2168     024F  2A1B               	goto	l1192
+  2169     0250                     u110:
+  2170     0250                     l81:
+  2171                           
+  2172                           ;mcc_generated_files/memory.c: 142:     PMCON1bits.WREN = 0;
+  2173     0250  0023               	movlb	3	; select bank3
+  2174     0251  1115               	bcf	21,2	;volatile
+  2175     0252                     l1216:
+  2176                           
+  2177                           ;mcc_generated_files/memory.c: 143:     INTCONbits.GIE = GIEBitValue;
+  2178     0252  0C7B               	rrf	FLASH_WriteBlock@GIEBitValue,w
+  2179     0253  1C03               	skipc
+  2180     0254  138B               	bcf	11,7	;volatile
+  2181     0255  1803               	skipnc
+  2182     0256  178B               	bsf	11,7	;volatile
+  2183     0257                     l79:
+  2184     0257  0008               	return
+  2185     0258                     __end_of_FLASH_WriteBlock:
+  2186                           
+  2187                           	psect	text7
+  2188     019F                     __ptext7:	
+  2189 ;; *************** function _FLASH_EraseBlock *****************
+  2190 ;; Defined at:
+  2191 ;;		line 148 in file "mcc_generated_files/memory.c"
+  2192 ;; Parameters:    Size  Location     Type
+  2193 ;;  startAddr       2    0[COMMON] unsigned short 
+  2194 ;; Auto vars:     Size  Location     Type
+  2195 ;;  GIEBitValue     1    2[COMMON] unsigned char 
+  2196 ;; Return value:  Size  Location     Type
+  2197 ;;                  1    wreg      void 
+  2198 ;; Registers used:
+  2199 ;;		wreg, status,2, status,0
+  2200 ;; Tracked objects:
+  2201 ;;		On entry : 0/0
+  2202 ;;		On exit  : 0/0
+  2203 ;;		Unchanged: 0/0
+  2204 ;; Data sizes:     COMMON   BANK0   BANK1
+  2205 ;;      Params:         2       0       0
+  2206 ;;      Locals:         1       0       0
+  2207 ;;      Temps:          0       0       0
+  2208 ;;      Totals:         3       0       0
+  2209 ;;Total ram usage:        3 bytes
+  2210 ;; Hardware stack levels used: 1
+  2211 ;; This function calls:
+  2212 ;;		Nothing
+  2213 ;; This function is called by:
+  2214 ;;		_FLASH_WriteBlock
+  2215 ;; This function uses a non-reentrant model
+  2216 ;;
+  2217                           
+  2218     019F                     _FLASH_EraseBlock:	
+  2219                           ;psect for function _FLASH_EraseBlock
+  2220                           
+  2221     019F                     l1106:	
+  2222                           ;incstack = 0
+  2223                           ; Regs used in _FLASH_EraseBlock: [wreg+status,2+status,0]
+  2224                           
+  2225                           
+  2226                           ;mcc_generated_files/memory.c: 148: void FLASH_EraseBlock(uint16_t startAddr);mcc_genera
+      +                          ted_files/memory.c: 149: {;mcc_generated_files/memory.c: 150:     uint8_t GIEBitValue = 
+      +                          INTCONbits.GIE;
+  2227     019F  3000               	movlw	0
+  2228     01A0  1B8B               	btfsc	11,7	;volatile
+  2229     01A1  3001               	movlw	1
+  2230     01A2  00F2               	movwf	FLASH_EraseBlock@GIEBitValue
+  2231     01A3                     l1108:
+  2232                           
+  2233                           ;mcc_generated_files/memory.c: 153:     INTCONbits.GIE = 0;
+  2234     01A3  138B               	bcf	11,7	;volatile
+  2235     01A4                     l1110:
+  2236                           
+  2237                           ;mcc_generated_files/memory.c: 155:     PMADRL = (startAddr & 0xFF);
+  2238     01A4  0870               	movf	FLASH_EraseBlock@startAddr,w
+  2239     01A5  0023               	movlb	3	; select bank3
+  2240     01A6  0091               	movwf	17	;volatile
+  2241     01A7                     l1112:
+  2242                           
+  2243                           ;mcc_generated_files/memory.c: 157:     PMADRH = ((startAddr & 0xFF00) >> 8);
+  2244     01A7  0871               	movf	FLASH_EraseBlock@startAddr+1,w
+  2245     01A8  0092               	movwf	18	;volatile
+  2246     01A9                     l1114:
+  2247                           
+  2248                           ;mcc_generated_files/memory.c: 160:     PMCON1bits.CFGS = 0;
+  2249     01A9  1315               	bcf	21,6	;volatile
+  2250     01AA                     l1116:
+  2251                           
+  2252                           ;mcc_generated_files/memory.c: 161:     PMCON1bits.FREE = 1;
+  2253     01AA  1615               	bsf	21,4	;volatile
+  2254     01AB                     l1118:
+  2255                           
+  2256                           ;mcc_generated_files/memory.c: 162:     PMCON1bits.WREN = 1;
+  2257     01AB  1515               	bsf	21,2	;volatile
+  2258                           
+  2259                           ;mcc_generated_files/memory.c: 165:     PMCON2 = 0x55;
+  2260     01AC  3055               	movlw	85
+  2261     01AD  0096               	movwf	22	;volsfr
+  2262                           
+  2263                           ;mcc_generated_files/memory.c: 166:     PMCON2 = 0xAA;
+  2264     01AE  30AA               	movlw	170
+  2265     01AF  0096               	movwf	22	;volsfr
+  2266     01B0                     l1120:
+  2267                           
+  2268                           ;mcc_generated_files/memory.c: 167:     PMCON1bits.WR = 1;
+  2269     01B0  1495               	bsf	21,1	;volatile
+  2270     01B1                     l1122:
+  2271                           
+  2272                           ;mcc_generated_files/memory.c: 168:     __nop();
+  2273     01B1  0000               	nop
+  2274     01B2                     l1124:
+  2275                           
+  2276                           ;mcc_generated_files/memory.c: 169:     __nop();
+  2277     01B2  0000               	nop
+  2278     01B3                     l1126:
+  2279                           
+  2280                           ;mcc_generated_files/memory.c: 171:     PMCON1bits.WREN = 0;
+  2281     01B3  0023               	movlb	3	; select bank3
+  2282     01B4  1115               	bcf	21,2	;volatile
+  2283     01B5                     l1128:
+  2284                           
+  2285                           ;mcc_generated_files/memory.c: 172:     INTCONbits.GIE = GIEBitValue;
+  2286     01B5  0C72               	rrf	FLASH_EraseBlock@GIEBitValue,w
+  2287     01B6  1C03               	skipc
+  2288     01B7  138B               	bcf	11,7	;volatile
+  2289     01B8  1803               	skipnc
+  2290     01B9  178B               	bsf	11,7	;volatile
+  2291     01BA                     l85:
+  2292     01BA  0008               	return
+  2293     01BB                     __end_of_FLASH_EraseBlock:
+  2294                           
+  2295                           	psect	text8
+  2296     0186                     __ptext8:	
+  2297 ;; *************** function _FLASH_ReadWord *****************
+  2298 ;; Defined at:
+  2299 ;;		line 58 in file "mcc_generated_files/memory.c"
+  2300 ;; Parameters:    Size  Location     Type
+  2301 ;;  flashAddr       2    0[COMMON] unsigned short 
+  2302 ;; Auto vars:     Size  Location     Type
+  2303 ;;  GIEBitValue     1    2[COMMON] unsigned char 
+  2304 ;; Return value:  Size  Location     Type
+  2305 ;;                  2    0[COMMON] unsigned short 
+  2306 ;; Registers used:
+  2307 ;;		wreg, status,2, status,0
+  2308 ;; Tracked objects:
+  2309 ;;		On entry : 0/0
+  2310 ;;		On exit  : 0/0
+  2311 ;;		Unchanged: 0/0
+  2312 ;; Data sizes:     COMMON   BANK0   BANK1
+  2313 ;;      Params:         2       0       0
+  2314 ;;      Locals:         1       0       0
+  2315 ;;      Temps:          0       0       0
+  2316 ;;      Totals:         3       0       0
+  2317 ;;Total ram usage:        3 bytes
+  2318 ;; Hardware stack levels used: 1
+  2319 ;; This function calls:
+  2320 ;;		Nothing
+  2321 ;; This function is called by:
+  2322 ;;		_FLASH_WriteWord
+  2323 ;;		_main
+  2324 ;; This function uses a non-reentrant model
+  2325 ;;
+  2326                           
+  2327     0186                     _FLASH_ReadWord:	
+  2328                           ;psect for function _FLASH_ReadWord
+  2329                           
+  2330     0186                     l1148:	
+  2331                           ;incstack = 0
+  2332                           ; Regs used in _FLASH_ReadWord: [wreg+status,2+status,0]
+  2333                           
+  2334                           
+  2335                           ;mcc_generated_files/memory.c: 58: uint16_t FLASH_ReadWord(uint16_t flashAddr);mcc_gener
+      +                          ated_files/memory.c: 59: {;mcc_generated_files/memory.c: 60:     uint8_t GIEBitValue = I
+      +                          NTCONbits.GIE;
+  2336     0186  3000               	movlw	0
+  2337     0187  1B8B               	btfsc	11,7	;volatile
+  2338     0188  3001               	movlw	1
+  2339     0189  00F2               	movwf	FLASH_ReadWord@GIEBitValue
+  2340     018A                     l1150:
+  2341                           
+  2342                           ;mcc_generated_files/memory.c: 62:     INTCONbits.GIE = 0;
+  2343     018A  138B               	bcf	11,7	;volatile
+  2344     018B                     l1152:
+  2345                           
+  2346                           ;mcc_generated_files/memory.c: 63:     PMADRL = (flashAddr & 0x00FF);
+  2347     018B  0870               	movf	FLASH_ReadWord@flashAddr,w
+  2348     018C  0023               	movlb	3	; select bank3
+  2349     018D  0091               	movwf	17	;volatile
+  2350     018E                     l1154:
+  2351                           
+  2352                           ;mcc_generated_files/memory.c: 64:     PMADRH = ((flashAddr & 0xFF00) >> 8);
+  2353     018E  0871               	movf	FLASH_ReadWord@flashAddr+1,w
+  2354     018F  0092               	movwf	18	;volatile
+  2355     0190                     l1156:
+  2356                           
+  2357                           ;mcc_generated_files/memory.c: 66:     PMCON1bits.CFGS = 0;
+  2358     0190  1315               	bcf	21,6	;volatile
+  2359     0191                     l1158:
+  2360                           
+  2361                           ;mcc_generated_files/memory.c: 67:     PMCON1bits.RD = 1;
+  2362     0191  1415               	bsf	21,0	;volatile
+  2363     0192                     l1160:
+  2364                           
+  2365                           ;mcc_generated_files/memory.c: 68:     __nop();
+  2366     0192  0000               	nop
+  2367     0193                     l1162:
+  2368                           
+  2369                           ;mcc_generated_files/memory.c: 69:     __nop();
+  2370     0193  0000               	nop
+  2371     0194                     l1164:
+  2372                           
+  2373                           ;mcc_generated_files/memory.c: 70:     INTCONbits.GIE = GIEBitValue;
+  2374     0194  0C72               	rrf	FLASH_ReadWord@GIEBitValue,w
+  2375     0195  1C03               	skipc
+  2376     0196  138B               	bcf	11,7	;volatile
+  2377     0197  1803               	skipnc
+  2378     0198  178B               	bsf	11,7	;volatile
+  2379     0199                     l1166:
+  2380                           
+  2381                           ;mcc_generated_files/memory.c: 72:     return ((uint16_t)((PMDATH << 8) | PMDATL));
+  2382     0199  0023               	movlb	3	; select bank3
+  2383     019A  0814               	movf	20,w	;volatile
+  2384     019B  00F1               	movwf	?_FLASH_ReadWord+1
+  2385     019C  0813               	movf	19,w	;volatile
+  2386     019D  00F0               	movwf	?_FLASH_ReadWord
+  2387     019E                     l70:
+  2388     019E  0008               	return
+  2389     019F                     __end_of_FLASH_ReadWord:
+  2390     007E                     btemp	set	126	;btemp
+  2391     007E                     wtemp0	set	126
+  2392                           
+  2393                           	psect	idloc
+  2394                           
+  2395                           ;Config register IDLOC0 @ 0x8000
+  2396                           ;	unspecified, using default values
+  2397     8000                     	org	32768
+  2398     8000  3FFF               	dw	16383
+  2399                           
+  2400                           ;Config register IDLOC1 @ 0x8001
+  2401                           ;	unspecified, using default values
+  2402     8001                     	org	32769
+  2403     8001  3FFF               	dw	16383
+  2404                           
+  2405                           ;Config register IDLOC2 @ 0x8002
+  2406                           ;	unspecified, using default values
+  2407     8002                     	org	32770
+  2408     8002  3FFF               	dw	16383
+  2409                           
+  2410                           ;Config register IDLOC3 @ 0x8003
+  2411                           ;	unspecified, using default values
+  2412     8003                     	org	32771
+  2413     8003  3FFF               	dw	16383
+  2414                           
+  2415                           	psect	config
+  2416                           
+  2417                           ;Config register CONFIG1 @ 0x8007
+  2418                           ;	
+  2419                           ;	FOSC = INTOSC, INTOSC oscillator; I/O function on CLKIN pin
+  2420                           ;	Watchdog Timer Enable
+  2421                           ;	WDTE = OFF, WDT disabled
+  2422                           ;	Power-up Timer Enable
+  2423                           ;	PWRTE = OFF, PWRT disabled
+  2424                           ;	MCLR Pin Function Select
+  2425                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
+  2426                           ;	Flash Program Memory Code Protection
+  2427                           ;	CP = OFF, Program memory code protection is disabled
+  2428                           ;	Brown-out Reset Enable
+  2429                           ;	BOREN = ON, Brown-out Reset enabled
+  2430                           ;	Clock Out Enable
+  2431                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+      +                          pin
+  2432     8007                     	org	32775
+  2433     8007  3FE4               	dw	16356
+  2434                           
+  2435                           ;Config register CONFIG2 @ 0x8008
+  2436                           ;	Flash Memory Self-Write Protection
+  2437                           ;	WRT = OFF, Write protection off
+  2438                           ;	PLL Enable
+  2439                           ;	PLLEN = OFF, 4x PLL disabled
+  2440                           ;	Stack Overflow/Underflow Reset Enable
+  2441                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+  2442                           ;	Brown-out Reset Voltage Selection
+  2443                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  2444                           ;	Low Power Brown-out Reset enable bit
+  2445                           ;	LPBOREN = OFF, LPBOR is disabled
+  2446                           ;	Low-Voltage Programming Enable
+  2447                           ;	LVP = ON, Low-voltage programming enabled
+  2448     8008                     	org	32776
+  2449     8008  3EFF               	dw	16127
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  32
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     14      14
+    BANK0            80     47      47
+    BANK1            32      0       0
+
+Pointer List with Targets:
+
+    FLASH_WriteBlock@flashWordArray	PTR unsigned short  size(1) Largest target is 32
+		 -> main@Buf(BANK0[32]), 
+
+    FLASH_WriteWord@ramBuf	PTR unsigned short  size(1) Largest target is 32
+		 -> main@Buf(BANK0[32]), 
+
+
+Critical Paths under _main in COMMON
+
+    _main->_FLASH_WriteWord
+    _FLASH_WriteWord->_FLASH_WriteBlock
+    _FLASH_WriteBlock->_FLASH_EraseBlock
+
+Critical Paths under _main in BANK0
+
+    _main->_FLASH_WriteWord
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                38    38      0    3794
+                                              9 BANK0     38    38      0
+                     _FLASH_ReadWord
+                    _FLASH_WriteWord
+                  _SYSTEM_Initialize
+ ---------------------------------------------------------------------------------
+ (1) _SYSTEM_Initialize                                    0     0      0       0
+              _OSCILLATOR_Initialize
+             _PIN_MANAGER_Initialize
+                     _WDT_Initialize
+ ---------------------------------------------------------------------------------
+ (2) _WDT_Initialize                                       0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _PIN_MANAGER_Initialize                               0     0      0       0
+ ---------------------------------------------------------------------------------
+ (2) _OSCILLATOR_Initialize                                0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _FLASH_WriteWord                                     10     5      5    2713
+                                             13 COMMON     1     1      0
+                                              0 BANK0      9     4      5
+                     _FLASH_ReadWord
+                   _FLASH_WriteBlock
+ ---------------------------------------------------------------------------------
+ (2) _FLASH_WriteBlock                                    10     7      3     608
+                                              3 COMMON    10     7      3
+                   _FLASH_EraseBlock
+ ---------------------------------------------------------------------------------
+ (3) _FLASH_EraseBlock                                     3     1      2     143
+                                              0 COMMON     3     1      2
+ ---------------------------------------------------------------------------------
+ (2) _FLASH_ReadWord                                       3     1      2     447
+                                              0 COMMON     3     1      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _FLASH_ReadWord
+   _FLASH_WriteWord
+     _FLASH_ReadWord
+     _FLASH_WriteBlock
+       _FLASH_EraseBlock
+   _SYSTEM_Initialize
+     _OSCILLATOR_Initialize
+     _PIN_MANAGER_Initialize
+     _WDT_Initialize
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM              70      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      E       E       2      100.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0       0       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BANK0               50     2F      2F       6       58.8%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BITBANK1            20      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BANK1               20      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+DATA                 0      0       0       9        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
+Symbol Table                                                                                   Mon May 22 16:08:33 2023
+
+                            l20 0165                              l23 015F                              l17 016F  
+                            l44 0185                              l70 019E                              l81 0250  
+                            l75 01F8                              l85 01BA                              l78 020E  
+                            l79 0257                              u90 020D                              u91 020C  
+                            u95 0209                             l110 02E8                             l120 02FE  
+                           l202 037C                             l115 02FA                             l204 037E  
+                           l221 039B                             l213 038D                             l134 0311  
+                           l118 02FC                             l151 032A                             l127 0307  
+                           l144 0320                             l233 03B0                             l225 03A2  
+                           l217 0394                             l209 0386                             l129 0309  
+                           l146 0322                             l138 0318                             l171 0349  
+                           l163 033F                             l155 0331                             l180 0358  
+                           l237 03B7                             l229 03A9                             l159 0338  
+                           l192 036D                             l184 035F                             l176 0351  
+                           l169 0347                             l196 0374                             l188 0366  
+                           u100 023A                             u101 0239                             u110 0250  
+                           u111 024F                             u120 01E5                             u121 01E4  
+                           u130 02B0                             u131 02AF                             u140 02B9  
+                           u141 02B8                             u150 02FA                             u207 030B  
+                           u151 02F9                             u160 03E9                             u161 03E8  
+                           u217 0312                             u307 0359                             u227 0319  
+                           u317 0360                             u237 0324                             u407 03A3  
+                           u327 0367                             u247 032B                             u417 03AA  
+                           u337 036E                             u257 0332                             u177 02E2  
+                           u427 03B1                             u347 0375                             u267 0339  
+                           u187 02E9                             u437 03B8                             u357 0380  
+                           u277 0340                             u197 0300                             u447 03DD  
+                           u367 0387                             u287 034B                             u377 038E  
+                           u297 0352                             u387 0395                             u397 039C  
+                           wreg 0009                ?_FLASH_WriteWord 0020  FLASH_WriteBlock@flashWordArray 0075  
+                          l1110 01A4                            l1120 01B0                            l1112 01A7  
+                          l1200 0234                            l1122 01B1                            l1114 01A9  
+                          l1106 019F                            l1210 0241                            l1202 023A  
+                          l1130 0170                            l1124 01B2                            l1116 01AA  
+                          l1108 01A3                            l1212 0246                            l1204 023B  
+                          l1140 017B                            l1132 0172                            l1220 0166  
+                          l1300 030A                            l1150 018A                            l1126 01B3  
+                          l1118 01AB                            l1214 024A                            l1206 023F  
+                          l1142 0183                            l1134 0175                            l1222 0169  
+                          l1310 031C                            l1302 030E                            l1160 0192  
+                          l1152 018B                            l1128 01B5                            l1216 0252  
+                          l1208 0240                            l1240 01E5                            l1144 0160  
+                          l1136 0177                            l1224 016C                            l1400 03BB  
+                          l1320 032E                            l1312 031E                            l1304 0310  
+                          l1162 0193                            l1154 018E                            l1170 01F9  
+                          l1242 01EF                            l1234 01C6                            l1226 01BB  
+                          l1138 0179                            l1146 015C                            l1410 03E2  
+                          l1402 03BD                            l1330 033E                            l1322 0330  
+                          l1314 0323                            l1306 0315                            l1250 0260  
+                          l1164 0194                            l1156 0190                            l1148 0186  
+                          l1180 0216                            l1172 01FF                            l1236 01DB  
+                          l1228 01C2                            l1412 03E9                            l1340 0350  
+                          l1332 0343                            l1324 0335                            l1316 0327  
+                          l1308 0317                            l1260 0289                            l1252 026D  
+                          l1244 0258                            l1166 0199                            l1158 0191  
+                          l1182 0218                            l1174 0203                            l1238 01DF  
+                          l1414 03EF                            l1350 0363                            l1342 0355  
+                          l1334 0345                            l1326 0337                            l1318 0329  
+                          l1406 03BF                            l1270 02B9                            l1262 0290  
+                          l1254 0274                            l1246 025B                            l1192 021B  
+                          l1184 0219                            l1440 03C5                            l1360 0373  
+                          l1352 0365                            l1344 0357                            l1336 034A  
+                          l1328 033C                            l1408 03D9                            l1280 02E1  
+                          l1272 02BF                            l1264 029E                            l1256 027B  
+                          l1248 025B                            l1194 021E                            l1186 021A  
+                          l1178 020F                            l1370 0385                            l1362 0378  
+                          l1354 036A                            l1346 035C                            l1338 034E  
+                          l1290 02EF                            l1282 02E5                            l1274 02CD  
+                          l1266 02AA                            l1258 027B                            l1196 0220  
+                          l1380 0398                            l1372 038A                            l1364 037A  
+                          l1356 036C                            l1348 035E                            l1284 02E7  
+                          l1292 02F4                            l1276 02D1                            l1268 02B0  
+                          l1198 0228                            l1390 03A8                            l1382 039A  
+                          l1374 038C                            l1366 037F                            l1358 0371  
+                          l1294 02FF                            l1286 02EC                            l1278 02DF  
+                          l1392 03AD                            l1384 039F                            l1376 0391  
+                          l1368 0383                            l1296 0303                            l1288 02EE  
+                          l1394 03AF                            l1386 03A1                            l1378 0393  
+                          l1298 0305                            l1396 03B4                            l1388 03A6  
+                          l1398 03B6                            _LATA 010C                            _WPUA 020C  
+                          _main 0258                            fsr1h 0007                            indf1 0001  
+                          fsr1l 0006                            btemp 007E               ?_FLASH_WriteBlock 0073  
+                          start 0002              ??_FLASH_WriteBlock 0076   __end_of_OSCILLATOR_Initialize 0166  
+                         ?_main 0070                           _TRISA 008C                    main@readWord 004D  
+                _WDT_Initialize 015C                           main@i 004A                           status 0003  
+                         wtemp0 007E                 __initialization 03FE                    __end_of_main 03FE  
+                        ??_main 0029                   main@flashAddr 004B          __end_of_WDT_Initialize 0160  
+     FLASH_WriteBlock@writeAddr 0073                          _APFCON 011D                          _ANSELA 018C  
+                        _BORCON 0116                          _ODCONA 028C                          _INLVLA 038C  
+                        _PMADRH 0192                          _PMADRL 0191                          _PMDATH 0194  
+                        _PMDATL 0193                          _PMCON2 0196                          _OSCCON 0099  
+                        _WDTCON 0097   FLASH_WriteWord@blockStartAddr 0026             FLASH_WriteWord@word 0023  
+       FLASH_ReadWord@flashAddr 0070                 ?_WDT_Initialize 0070               _SYSTEM_Initialize 0166  
+       __end_of__initialization 03FE              ?_SYSTEM_Initialize 0070                  __pcstackCOMMON 0070  
+           ??_SYSTEM_Initialize 0070                FLASH_WriteWord@i 0028                  _OPTION_REGbits 0095  
+   FLASH_WriteBlock@GIEBitValue 007B       __end_of_SYSTEM_Initialize 0170                      __pmaintext 0258  
+                _FLASH_ReadWord 0186                         _OSCTUNE 0098                         _SLRCONA 030C  
+              _FLASH_EraseBlock 019F          __end_of_FLASH_ReadWord 019F                         __ptext1 0166  
+                       __ptext2 015C                         __ptext3 0170                         __ptext4 0160  
+                       __ptext5 01BB                         __ptext6 01F9                         __ptext7 019F  
+                       __ptext8 0186           _OSCILLATOR_Initialize 0160        ??_PIN_MANAGER_Initialize 0070  
+                       main@Buf 002A            end_of_initialization 03FE       FLASH_ReadWord@GIEBitValue 0072  
+               ?_FLASH_ReadWord 0070                ??_WDT_Initialize 0070               FLASH_WriteBlock@i 007C  
+             ??_FLASH_WriteWord 007D                _FLASH_WriteBlock 01F9          ?_OSCILLATOR_Initialize 0070  
+           start_initialization 03FE     FLASH_EraseBlock@GIEBitValue 0072        __end_of_FLASH_EraseBlock 01BB  
+                     ___latbits 0000                   __pcstackBANK0 0020          _PIN_MANAGER_Initialize 0170  
+      FLASH_WriteWord@flashAddr 0020  FLASH_WriteBlock@blockStartAddr 0079                        _LATAbits 010C  
+     FLASH_EraseBlock@startAddr 0070                ??_FLASH_ReadWord 0072                 _FLASH_WriteWord 01BB  
+      __end_of_FLASH_WriteBlock 0258         ??_OSCILLATOR_Initialize 0070           FLASH_WriteWord@ramBuf 0022  
+         FLASH_WriteWord@offset 0025               ?_FLASH_EraseBlock 0070              ??_FLASH_EraseBlock 0072  
+                    _INTCONbits 000B         __end_of_FLASH_WriteWord 01F9                      _PMCON1bits 0195  
+       ?_PIN_MANAGER_Initialize 0070  __end_of_PIN_MANAGER_Initialize 0186  

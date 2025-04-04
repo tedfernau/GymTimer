@@ -1,0 +1,30 @@
+"Source:","C:\Users\fernau\OneDrive - F5, Inc\Desktop\LunchTimeProjects\GymTimer\GymTimer\pcb\GymTimer.kicad_sch"
+"Date:","5/27/2022 10:11:42 AM"
+"Tool:","Eeschema (6.99.0-1656-g034b57d9c0)"
+"Generator:","C:\Program Files\KiCad\6.99\bin\scripting\plugins/bom_csv_grouped_by_value.py"
+"Component Count:","8"
+
+"Individual Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","Manufacturer Part Number"
+"","","BT1","BK-913","GymTimer:BK-913","GymTimer:BK-913","https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BK-913/2329371",""
+"","","C1",".1uF","Generic_Symbols:Capacitor","generic_footprints:cap-0402","https://www.digikey.com/en/products/detail/kemet/C0402C104K4RACAUTO/3314827","C0402C104K4RACAUTO"
+"","","C2",".1uF","Generic_Symbols:Capacitor","generic_footprints:cap-0402","https://www.digikey.com/en/products/detail/kemet/C0402C104K4RACAUTO/3314827","C0402C104K4RACAUTO"
+"","","D1","diode_TVS_bidirectional","Generic_Symbols:diode_TVS_bidirectional","GymTimer:TVS - PESD4V0Y1BSFYL","https://www.digikey.com/en/products/detail/nexperia-usa-inc/PESD4V0Y1BSFYL/9326494",""
+"","","M1","VibrationDCmotor","GymTimer:VibrationDCmotor","GymTimer:Z4TH7B2120042P","",""
+"","","R1","10k","Generic_Symbols:Resistor","generic_footprints:res_0402","https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RK73G1ETTP1002F/9852052",""
+"","","S1","SPST_NO_4pin","Generic_Symbols:SPST_NO_4pin","GymTimer:SPST-NO-EVQ-Q2U02W","https://www.digikey.com/en/products/detail/panasonic-electronic-components/EVQ-Q2U02W/762904?s=N4IgTCBcDaIKIDUCOBaJYCuAGMB3EAugL5A",""
+"","","U1","PIC12F1571","GymTimer:PIC12F1571","GymTimer:PIC12F1571 MSOP8","https://www.digikey.com/en/products/detail/microchip-technology/PIC12F1571-I-MS/4739306",""
+
+
+
+"Collated Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet","Manufacturer Part Number"
+"1","1","BT1","BK-913","GymTimer:BK-913","GymTimer:BK-913","https://www.digikey.com/en/products/detail/mpd-memory-protection-devices/BK-913/2329371",""
+"2","2","C1, C2",".1uF","Generic_Symbols:Capacitor","generic_footprints:cap-0402","https://www.digikey.com/en/products/detail/kemet/C0402C104K4RACAUTO/3314827","C0402C104K4RACAUTO"
+"3","1","D1","diode_TVS_bidirectional","Generic_Symbols:diode_TVS_bidirectional","GymTimer:TVS - PESD4V0Y1BSFYL","https://www.digikey.com/en/products/detail/nexperia-usa-inc/PESD4V0Y1BSFYL/9326494",""
+"4","1","M1","VibrationDCmotor","GymTimer:VibrationDCmotor","GymTimer:Z4TH7B2120042P","",""
+"5","1","R1","10k","Generic_Symbols:Resistor","generic_footprints:res_0402","https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RK73G1ETTP1002F/9852052",""
+"6","1","S1","SPST_NO_4pin","Generic_Symbols:SPST_NO_4pin","GymTimer:SPST-NO-EVQ-Q2U02W","https://www.digikey.com/en/products/detail/panasonic-electronic-components/EVQ-Q2U02W/762904?s=N4IgTCBcDaIKIDUCOBaJYCuAGMB3EAugL5A",""
+"7","1","U1","PIC12F1571","GymTimer:PIC12F1571","GymTimer:PIC12F1571 MSOP8","https://www.digikey.com/en/products/detail/microchip-technology/PIC12F1571-I-MS/4739306",""
